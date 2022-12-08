@@ -1,0 +1,75 @@
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.auth-wrapper {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper-form {
+  width: 35rem;
+  padding: 1.5rem;
+}
+
+h2 {
+  text-align: center;
+}
+
+input {
+  display: block;
+  font-size: 20px;
+  font-weight: 300;
+  padding: 1rem;
+  margin: 1rem auto;
+  width: 90%;
+  height: 15px;
+  border: 1px solid #777;
+  border-radius: 3px;
+  outline: none;
+}
+
+button {
+  /* width: 100%; */
+  width: 540px;
+  height: 40px;
+  color: white;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 0px 5px 0px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+
+.reset-link a {
+  color: black;
+  text-decoration: none;
+  margin-left: 10px;
+  font-size: 18px;
+}
+
+p {
+  display: flex;
+  justify-content: center;
+  margin-top: -5px;
+}
+
+.wrapper-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.link {
+  margin-left: 5px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  margin-top: -22px;
+}
