@@ -78,3 +78,21 @@ li a {
 .cartItems-number {
   margin-top: -8px;
 }
+
+.btn {
+  font-size: 16px;
+  font-weight: 400;
+  padding: 6px 8px;
+  margin-right: 20px;
+  border: 1px solid black;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s;
+  color: black;
+  background: antiquewhite;
+  width: 100px;
+  height: 25px;
+}
