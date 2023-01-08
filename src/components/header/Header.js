@@ -12,6 +12,7 @@ import {FaUserAlt} from 'react-icons/fa';
 import {useDispatch} from 'react-redux';
 import {SET_ACTIVE_USER, REMOVE_ACTIVE_USER} from '../../redux/slice/authSlice';
 import {ShowOnLogin, ShowOnLogout} from '../hiddenLink/HiddenLink';
+import AdminRoute, {AdminLink} from '../adminRoute/AdminRoute';
 
 const logo = (
   <div className={classes.logo}>
@@ -79,10 +80,19 @@ const Header = () => {
         <nav>
           <ul>
             <li>
+              <AdminLink>
+                <Link to="/admin/home">
+                  <button className={classes.btn}>Admin</button>
+                </Link>
+              </AdminLink>
+            </li>
+
+            <li>
               <NavLink to="/" className={activeLink}>
                 Home
               </NavLink>
             </li>
+
             <li>
               <NavLink to="/contact" className={activeLink}>
                 Contact us
