@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import classes from './Auth.module.css';
 import registerImage from '../../assets/register.png';
 import Card from '../../components/card/Card';
 import {Link} from 'react-router-dom';
@@ -8,6 +7,80 @@ import {auth} from '../../firebase/config';
 import Loader from '../../components/loader/Loader';
 import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  height: 70vh;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const ImageWrapper = styled.div`
+  width: 50%;
+  margin-top: 2rem;
+  text-align: right;
+`;
+
+const RegisterWrapper = styled.div`
+  width: 50%;
+  padding-top: 7rem;
+  margin-left: 10%;
+`;
+
+const RegisterFormWrapper = styled.div`
+  width: 70%;
+  height: 80%;
+`;
+
+const RegisterTitle = styled.h2`
+  text-align: center;
+`;
+const RegisterForm = styled.form`
+  height: 80%;
+  text-align: center;
+`;
+
+const Input = styled.input`
+  width: 70%;
+  height: 10%;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+`;
+
+const RegisterButton = styled.button`
+  width: 73%;
+  height: 10%;
+  font-size: 1rem;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 1rem;
+`;
+
+const LoginWrapper = styled.div`
+  width: 70%;
+  height: 10%;
+  margin-left: 2rem;
+  display: flex;
+  font-size: 1rem;
+  margin-top: 1rem;
+`;
+
+const LoginText = styled.div`
+  width: 50%;
+  text-align: right;
+`;
+
+const LoginLinkWrapper = styled.div`
+  width: 50%;
+  text-align: left;
+`;
+
+const LoginLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+`;
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -35,51 +108,52 @@ const Register = () => {
   return (
     <>
       {isLoading && <Loader />}
-      <section className={`${classes.container} ${classes['auth-wrapper']}`}>
-        <Card>
-          <div className={classes['wrapper-form']}>
-            <h2>Register</h2>
-            <form onSubmit={registerHandler}>
-              <input
-                type="text"
-                placeholder="Email"
-                required
-                value={email}
-                onChange={event => setEmail(event.target.value)}
-              />
-              <input
-                type="password"
-                placeholder="Password"
-                required
-                value={password}
-                onChange={event => setPassword(event.target.value)}
-              />
-              <input
-                type="password"
-                placeholder="Confirm Password"
-                required
-                value={confirmPassword}
-                onChange={event => setConfirmPassword(event.target.value)}
-              />
-              <button style={{backgroundColor: 'deepskyblue'}}>Register</button>
-            </form>
-
-            <span className={classes['wrapper-link']}>
-              <p>Already have an account? </p>
-              <Link className={classes.link} to="/login">
-                Login
-              </Link>
-            </span>
-          </div>
-        </Card>
-        <div>
+      <Wrapper>
+        <ImageWrapper>
           <img
             src={registerImage}
             alt="Register Image"
-            style={{marginLeft: '150px'}}
+            style={{width: '65%'}}
           />
-        </div>
-      </section>
+        </ImageWrapper>
+        <RegisterWrapper>
+          <RegisterFormWrapper>
+            <Card>
+              <RegisterTitle>Register</RegisterTitle>
+              <RegisterForm onSubmit={registerHandler}>
+                <Input
+                  type="text"
+                  placeholder="Email"
+                  value={email}
+                  onChange={event => setEmail(event.target.value)}
+                  required
+                />
+                <Input
+                  type="password"
+                  placeholder="Password"
+                  required
+                  value={password}
+                  onChange={event => setPassword(event.target.value)}
+                />
+                <Input
+                  type="password"
+                  placeholder="Confirm Password"
+                  required
+                  value={confirmPassword}
+                  onChange={event => setConfirmPassword(event.target.value)}
+                />
+                <RegisterButton type="submit">Register</RegisterButton>
+                <LoginWrapper>
+                  <LoginText>Already an account? </LoginText>
+                  <LoginLinkWrapper>
+                    <LoginLink to="/login">Login</LoginLink>
+                  </LoginLinkWrapper>
+                </LoginWrapper>
+              </RegisterForm>
+            </Card>
+          </RegisterFormWrapper>
+        </RegisterWrapper>
+      </Wrapper>
     </>
   );
 };
