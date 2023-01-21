@@ -1,7 +1,14 @@
 import React from 'react';
-import classes from './Card.module.css';
+import styled from 'styled-components';
+
+const CardWrapper = styled.div`
+  border: 1px solid transparent;
+  border-radius: 5px;
+  box-shadow: 0 0 10px grey;
+  height: 100%;
+`;
 const Card = ({children}) => {
-  return <div className={classes.card}>{children}</div>;
+  return <CardWrapper>{children}</CardWrapper>;
 };
 
 export default Card;

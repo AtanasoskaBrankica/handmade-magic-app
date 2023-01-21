@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import classes from './Auth.module.css';
 import loginImage from '../../assets/login.jpg';
 import {Link} from 'react-router-dom';
 import {AiOutlineGoogle} from 'react-icons/ai';
@@ -10,6 +9,103 @@ import {useNavigate} from 'react-router-dom';
 import Loader from '../../components/loader/Loader';
 import {toast} from 'react-toastify';
 import {GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
+import styled from 'styled-components';
+
+const AuthWrapper = styled.div`
+  height: 70vh;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const ImageWrapper = styled.div`
+  width: 50%;
+  padding-top: 6rem;
+  text-align: right;
+`;
+
+const LoginWrapper = styled.div`
+  width: 50%;
+  padding-top: 7rem;
+`;
+
+const LoginFormWrapper = styled.div`
+  width: 60%;
+  height: 80%;
+`;
+
+const LoginButton = styled.button`
+  width: 73%;
+  height: 10%;
+  font-size: 1rem;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 1rem;
+`;
+
+const LoginBtnWithGoogle = styled.button`
+  width: 73%;
+  height: 10%;
+  font-size: 1rem;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 1rem;
+  background-color: orangered;
+`;
+const LoginTitle = styled.h2`
+  text-align: center;
+`;
+const LoginForm = styled.form`
+  height: 80%;
+  text-align: center;
+`;
+
+const Input = styled.input`
+  width: 70%;
+  height: 10%;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+`;
+
+const ResetLinkWrapper = styled.div`
+  margin-top: 1rem;
+  width: 50%;
+`;
+
+const ResetLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+`;
+
+const RegisterWrapper = styled.div`
+  width: 70%;
+  height: 10%;
+  margin-left: 3rem;
+  display: flex;
+  font-size: 1rem;
+  margin-top: 1rem;
+`;
+
+const RegisterText = styled.div`
+  width: 50%;
+  text-align: right;
+`;
+
+const RegisterLinkWrapper = styled.div`
+  width: 50%;
+  text-align: left;
+`;
+
+const RegisterLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+`;
+
+const Text = styled.p`
+  margin-top: 0rem;
+`;
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -47,56 +143,53 @@ const Login = () => {
   return (
     <>
       {isLoading && <Loader />}
-      <section className={`${classes.container} ${classes['auth-wrapper']}`}>
-        <div>
-          <img src={loginImage} alt="Login Image" />
-        </div>
-        <Card>
-          <div className={classes['wrapper-form']}>
-            <h2>Login</h2>
-            <form onSubmit={loginHandler}>
-              <input
-                type="text"
-                placeholder="Email"
-                value={email}
-                onChange={event => setEmail(event.target.value)}
-                required
-              />
-              <input
-                type="password"
-                placeholder="Password"
-                required
-                value={password}
-                onChange={event => setPassword(event.target.value)}
-              />
-              <button type="submit" style={{backgroundColor: 'deepskyblue'}}>
-                Login
-              </button>
-              <div className={classes['reset-link']}>
-                <Link to="/reset">Forggot Password</Link>
-              </div>
-              <p>-- or --</p>
-            </form>
-            <button
-              style={{backgroundColor: 'orangered'}}
-              onClick={loginWithGoogle}
-            >
-              <AiOutlineGoogle
-                color="white"
-                size="20"
-                style={{marginRight: '5px'}}
-              />
-              Login With Google
-            </button>
-            <span className={classes['wrapper-link']}>
-              <p>Don't have an account? </p>
-              <Link className={classes.link} to="/register">
-                Register
-              </Link>
-            </span>
-          </div>
-        </Card>
-      </section>
+      <AuthWrapper>
+        <ImageWrapper>
+          <img src={loginImage} alt="Login Image" style={{width: '80%'}} />
+        </ImageWrapper>
+        <LoginWrapper>
+          <LoginFormWrapper>
+            <Card>
+              <LoginTitle>Login</LoginTitle>
+              <LoginForm onSubmit={loginHandler}>
+                <Input
+                  type="text"
+                  placeholder="Email"
+                  value={email}
+                  onChange={event => setEmail(event.target.value)}
+                  required
+                />
+                <Input
+                  type="password"
+                  placeholder="Password"
+                  required
+                  value={password}
+                  onChange={event => setPassword(event.target.value)}
+                />
+                <LoginButton type="submit">Login</LoginButton>
+                <ResetLinkWrapper>
+                  <ResetLink to="/reset">Forggot Password</ResetLink>
+                </ResetLinkWrapper>
+                <Text>-- or --</Text>
+                <LoginBtnWithGoogle onClick={loginWithGoogle}>
+                  <AiOutlineGoogle
+                    color="white"
+                    size="20"
+                    style={{marginRight: '5px'}}
+                  />
+                  Login With Google
+                </LoginBtnWithGoogle>
+                <RegisterWrapper>
+                  <RegisterText>Don't have an account? </RegisterText>
+                  <RegisterLinkWrapper>
+                    <RegisterLink to="/register">Register</RegisterLink>
+                  </RegisterLinkWrapper>
+                </RegisterWrapper>
+              </LoginForm>
+            </Card>
+          </LoginFormWrapper>
+        </LoginWrapper>
+      </AuthWrapper>
     </>
   );
 };
