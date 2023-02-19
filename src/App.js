@@ -3,6 +3,7 @@ import {Home, Contact, Login, Register, Reset, Admin} from './pages';
 import {Header, Footer, AdminRoute} from './components';
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ProductDetails from './components/product/productDetails/ProductDetails';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
               </AdminRoute>
             }
           />
+          <Route path="/product-details/:id" element={<ProductDetails />} />
         </Routes>
         <Footer />
       </BrowserRouter>
