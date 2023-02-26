@@ -1,9 +1,15 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {BsFillGridFill} from 'react-icons/bs';
 import {FaListAlt} from 'react-icons/fa';
 import Search from '../../search/Search';
 import ProductItem from '../productItem/ProductItem';
+import {useDispatch, useSelector} from 'react-redux';
+import {
+  FILTER_BY_SEARCH,
+  SORT_PRODUCTS,
+  selectFilteredProducts,
+} from '../../../redux/slice/filterSlice';
 const Container = styled.div`
   border: 1px solid green;
   height: 100%;
@@ -46,6 +52,17 @@ const Grid = styled.div`
 const ProductList = ({products}) => {
   const [grid, setGrid] = useState(true);
   const [searchValue, setSearchValue] = useState('');
+  const [sort, setSort] = useState('latest');
+  const filteredProducts = useSelector(selectFilteredProducts);
+  console.log('filteredProducts', filteredProducts);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(FILTER_BY_SEARCH({products, searchValue}));
+  }, [searchValue, products]);
+
+  useEffect(() => {
+    dispatch(SORT_PRODUCTS({products, sort}));
+  }, [sort, products]);
   console.log('products==>', products);
   return (
     <Container id="product">
@@ -61,7 +78,9 @@ const ProductList = ({products}) => {
           <Icon>
             <FaListAlt size={25} color="blue" onClick={() => setGrid(false)} />
           </Icon>
-          <p>15 Products found</p>
+          <p>
+            <b>{filteredProducts.length}</b>Products found
+          </p>
         </GridWrapper>
         <SearchWrapper>
           <Search
@@ -71,7 +90,7 @@ const ProductList = ({products}) => {
         </SearchWrapper>
         <SortWrapper>
           <label>Sort by:</label>
-          <select>
+          <select value={sort} onChange={e => setSort(e.target.value)}>
             <option value="latest">Latest</option>
             <option value="lowest-price">Lowest Price</option>
             <option value="highest-price">Highest Price</option>
@@ -81,7 +100,7 @@ const ProductList = ({products}) => {
         </SortWrapper>
       </TopContainer>
       <Grid>
-        {products.map(product => {
+        {filteredProducts.map(product => {
           return (
             <div key={product.id}>
               <ProductItem {...product} product={product} />

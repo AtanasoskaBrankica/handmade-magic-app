@@ -4,7 +4,11 @@ import ProductFilter from './productFilter/ProductFilter';
 import styled from 'styled-components';
 import useFetchCollection from '../../customHooks/useFetchCollection';
 import {useDispatch, useSelector} from 'react-redux';
-import {selectProducts, STORE_PRODUCTS} from '../../redux/slice/productSlice';
+import {
+  GET_PRICE_RANGE,
+  selectProducts,
+  STORE_PRODUCTS,
+} from '../../redux/slice/productSlice';
 import Loader from '../loader/Loader';
 
 const Container = styled.div`
@@ -28,6 +32,11 @@ const Product = () => {
   useEffect(() => {
     dispatch(
       STORE_PRODUCTS({
+        products: data,
+      })
+    );
+    dispatch(
+      GET_PRICE_RANGE({
         products: data,
       })
     );
