@@ -3,6 +3,11 @@ import Card from '../../card/Card';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import {connectAuthEmulator} from 'firebase/auth';
+import {
+  ADD_TO_CART,
+  CALCULATE_TOTAL_QUANTITY,
+} from '../../../redux/slice/cartSlice';
+import {useDispatch} from 'react-redux';
 
 const Container = styled.div`
   border: 1px solid;
@@ -47,12 +52,18 @@ const Button = styled.button`
   font-size: 1rem;
 `;
 const ProductItem = ({product, id, name, price, desc, imageURL}) => {
+  const dispatch = useDispatch();
   const shorthenText = (text, n) => {
     if (text.lenght > 15) {
       const shorthenedText = text.substring(0, n).concat('...');
       return shorthenedText;
     }
     return text;
+  };
+
+  const addToCart = product => {
+    dispatch(ADD_TO_CART(product));
+    dispatch(CALCULATE_TOTAL_QUANTITY());
   };
   return (
     <Card>
@@ -67,7 +78,7 @@ const ProductItem = ({product, id, name, price, desc, imageURL}) => {
           <ProductPrice>{`$${price}`}</ProductPrice>
           <ProductName>{shorthenText(name, 18)}</ProductName>
         </ProductInfoContainer>
-        <Button>Add To Cart</Button>
+        <Button onClick={() => addToCart(product)}>Add To Cart</Button>
       </Item>
     </Card>
   );
