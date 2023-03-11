@@ -8,11 +8,15 @@ import {toast} from 'react-toastify';
 import {useEffect} from 'react';
 import {onAuthStateChanged} from 'firebase/auth';
 import {FaUserAlt} from 'react-icons/fa';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {SET_ACTIVE_USER, REMOVE_ACTIVE_USER} from '../../redux/slice/authSlice';
 import {ShowOnLogin, ShowOnLogout} from '../hiddenLink/HiddenLink';
 import {AdminLink} from '../adminRoute/AdminRoute';
 import styled from 'styled-components';
+import {
+  CALCULATE_TOTAL_QUANTITY,
+  selectCartTotalQuantity,
+} from '../../redux/slice/cartSlice';
 
 const HeaderWrapper = styled.header`
   height: 8rem;
@@ -20,8 +24,12 @@ const HeaderWrapper = styled.header`
   color: black;
   display: flex;
   justify-content: space-between;
-
   padding-right: 2rem;
+  width: ${props => (props.scrollPage ? '100%' : null)}
+  position: ${props => (props.scrollPage ? 'fixed' : null)}
+  top: ${props => (props.scrollPage ? '0' : null)}
+  transition: ${props => (props.scrollPage ? 'all 0.5s' : null)}
+  z-index: ${props => (props.scrollPage ? '9' : null)};
 `;
 
 const LeftWrapper = styled.div`
@@ -123,8 +131,20 @@ const AdminButton = styled.button`
 const Header = () => {
   const navigate = useNavigate();
   const [userName, setUsername] = useState('');
-
+  const [scrollPage, setScrollPage] = useState(false);
   const dispatch = useDispatch();
+  const cartTotalQuantity = useSelector(selectCartTotalQuantity);
+
+  const fixNavBar = () => {
+    if (window.scrollY > 50) {
+      setScrollPage(true);
+    } else {
+      setScrollPage(false);
+    }
+  };
+
+  window.addEventListener('scroll', fixNavBar);
+
   //Monitor currently sign-in user
   useEffect(() => {
     onAuthStateChanged(auth, user => {
@@ -164,7 +184,7 @@ const Header = () => {
   };
 
   return (
-    <HeaderWrapper>
+    <HeaderWrapper scrollPage={scrollPage}>
       <LeftWrapper>
         <LogoWrapper>
           <LogoLink to="/">Handmade Magic</LogoLink>
@@ -213,7 +233,7 @@ const Header = () => {
           <HeaderLink to="/cart">
             Cart
             <GiShoppingCart size={20} />
-            <CartNumber>0</CartNumber>
+            <CartNumber>{cartTotalQuantity}</CartNumber>
           </HeaderLink>
         </Cart>
       </RightWrapper>

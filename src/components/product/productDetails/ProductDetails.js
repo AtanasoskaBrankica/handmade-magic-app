@@ -4,6 +4,13 @@ import {Link, useParams} from 'react-router-dom';
 import {toast} from 'react-toastify';
 import {db} from '../../../firebase/config';
 import styled from 'styled-components';
+import {
+  ADD_TO_CART,
+  DECREASE_CART,
+  CALCULATE_TOTAL_QUANTITY,
+  selectCartItems,
+} from '../../../redux/slice/cartSlice';
+import {useDispatch, useSelector} from 'react-redux';
 
 const Container = styled.div`
   border: 1px solid red;
@@ -39,6 +46,14 @@ const Button = styled.button`
 const ProductDetails = () => {
   const {id} = useParams();
   const [product, setProduct] = useState({});
+  const cartItems = useSelector(selectCartItems);
+  const dispatch = useDispatch();
+
+  const cart = cartItems.find(item => item.id === id);
+
+  const isCartAdded = cartItems.findIndex(item => {
+    return item.id === id;
+  });
 
   const getProduct = async () => {
     const docRef = doc(db, 'products', id);
@@ -58,6 +73,16 @@ const ProductDetails = () => {
   useEffect(() => {
     getProduct();
   }, []);
+
+  const addToCart = product => {
+    dispatch(ADD_TO_CART(product));
+    dispatch(CALCULATE_TOTAL_QUANTITY());
+  };
+
+  const decreaseCart = product => {
+    dispatch(DECREASE_CART(product));
+    dispatch(CALCULATE_TOTAL_QUANTITY());
+  };
   return (
     <Container>
       <HeaderContainer>
@@ -92,13 +117,17 @@ const ProductDetails = () => {
               {product.brand}
             </p>
             <div>
-              <button>-</button>
-              <p>
-                <b>1</b>
-              </p>
-              <button>+</button>
+              {isCartAdded < 0 ? null : (
+                <>
+                  <button onClick={() => decreaseCart(product)}>-</button>
+                  <p>
+                    <b>{cart.cartQuantity}</b>
+                  </p>
+                  <button onClick={() => addToCart(product)}>+</button>
+                </>
+              )}
             </div>
-            <Button>Add To Cart</Button>
+            <Button onClick={() => addToCart(product)}>Add To Cart</Button>
           </ProductContent>
         </ProductContainer>
       )}

@@ -4,6 +4,7 @@ import {Header, Footer, AdminRoute} from './components';
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProductDetails from './components/product/productDetails/ProductDetails';
+import ShoppingCart from './pages/shoppingCart/ShoppingCart';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             }
           />
           <Route path="/product-details/:id" element={<ProductDetails />} />
+          <Route path="/cart" element={<ShoppingCart />} />
         </Routes>
         <Footer />
       </BrowserRouter>
