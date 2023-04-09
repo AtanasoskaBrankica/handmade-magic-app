@@ -13,22 +13,21 @@ import {
 } from '../../../redux/slice/productSlice';
 
 const FilterContainer = styled.div`
-  border: 1px solid red;
   height: 100%;
 `;
 
 const CategoriesWrapper = styled.div`
-  border: 1px solid blue;
   height: 50%;
+  border: 1px solid black;
 `;
 const BrandWrapper = styled.div`
-  border: 1px solid green;
   height: 20%;
+  border: 1px solid black;
 `;
 
 const PriceWrapper = styled.div`
-  border: 1px solid green;
   height: 20%;
+  border: 1px solid black;
 `;
 const Button = styled.button`
   background: orangered;

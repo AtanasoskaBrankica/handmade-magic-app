@@ -5,6 +5,11 @@ import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProductDetails from './components/product/productDetails/ProductDetails';
 import ShoppingCart from './pages/shoppingCart/ShoppingCart';
+import CheckoutDetails from './pages/checkout/CheckoutDetails';
+import Checkout from './pages/checkout/Checkout';
+import CheckoutSuccess from './pages/checkout/CheckoutSuccess';
+import Orders from './pages/orders/Orders';
+import OrderDetails from './pages/orderDetails/OrderDetails';
 
 function App() {
   return (
@@ -29,6 +34,11 @@ function App() {
           />
           <Route path="/product-details/:id" element={<ProductDetails />} />
           <Route path="/cart" element={<ShoppingCart />} />
+          <Route path="/checkout-details" element={<CheckoutDetails />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/checkout-success" element={<CheckoutSuccess />} />
+          <Route path="/order-history" element={<Orders />} />
+          <Route path="/order-details/:id" element={<OrderDetails />} />
         </Routes>
         <Footer />
       </BrowserRouter>
