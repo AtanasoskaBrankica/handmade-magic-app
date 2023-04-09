@@ -11,12 +11,11 @@ import {
   selectFilteredProducts,
 } from '../../../redux/slice/filterSlice';
 const Container = styled.div`
-  border: 1px solid green;
   height: 100%;
 `;
 const TopContainer = styled.div`
   height: 10%;
-  border: 1px solid blue;
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -25,7 +24,7 @@ const TopContainer = styled.div`
 const GridWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  border: 1px solid blue;
+
   flex: 1;
 `;
 
@@ -33,12 +32,10 @@ const Icon = styled.div`
   margin-right: 1rem;
 `;
 const SearchWrapper = styled.div`
-  border: 1px solid green;
   flex: 1;
 `;
 
 const SortWrapper = styled.div`
-  border: 1px solid red;
   flex: 1;
 `;
 

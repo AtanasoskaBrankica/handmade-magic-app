@@ -11,30 +11,26 @@ import {
   selectCartItems,
 } from '../../../redux/slice/cartSlice';
 import {useDispatch, useSelector} from 'react-redux';
+import useFetchDocument from '../../../customHooks/useFetchDocument';
 
 const Container = styled.div`
-  border: 1px solid red;
   height: 80vh;
 `;
 
 const HeaderContainer = styled.div`
-  border: 1px solid blue;
   height: 20%;
 `;
 const ProductContainer = styled.div`
-  border: 1px solid green;
   height: 80%;
   display: flex;
   flex-direction: row;
 `;
 
 const ImageContainer = styled.div`
-  border: 1px solid yellow;
   width: 30%;
 `;
 
 const ProductContent = styled.div`
-  border: 1px solid green;
   width: 70%;
 `;
 const Button = styled.button`
@@ -48,6 +44,7 @@ const ProductDetails = () => {
   const [product, setProduct] = useState({});
   const cartItems = useSelector(selectCartItems);
   const dispatch = useDispatch();
+  const {document} = useFetchDocument('products', id);
 
   const cart = cartItems.find(item => item.id === id);
 
@@ -55,24 +52,9 @@ const ProductDetails = () => {
     return item.id === id;
   });
 
-  const getProduct = async () => {
-    const docRef = doc(db, 'products', id);
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) {
-      // console.log('Document data:', docSnap.data());
-      const obj = {
-        id: id,
-        ...docSnap.data(),
-      };
-      setProduct(obj);
-    } else {
-      toast.error('Product not found');
-    }
-  };
   useEffect(() => {
-    getProduct();
-  }, []);
+    setProduct(document);
+  }, [document]);
 
   const addToCart = product => {
     dispatch(ADD_TO_CART(product));

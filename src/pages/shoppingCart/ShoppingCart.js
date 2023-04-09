@@ -10,9 +10,10 @@ import {
   selectCartItems,
   selectCartTotalAmount,
   selectCartTotalQuantity,
+  SAVE_URL,
 } from '../../redux/slice/cartSlice';
 import {BsTrash} from 'react-icons/bs';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import Card from '../../components/card/Card';
 
@@ -23,7 +24,6 @@ const QuantityWrapper = styled.div`
 `;
 const ButtonsWrapper = styled.div`
   display: flex;
-  border: 1px solid red;
   flex-direction: row;
   justify-content: space-between;
 `;
@@ -34,13 +34,11 @@ const Button = styled.button`
   font-size: 1rem;
 `;
 const SubTotalWrapper = styled.div`
-  border: 1px solid green;
   display: flex;
 
   flex-direction: row;
 `;
 const CardContainer = styled.div`
-  border: 1px solid blue;
   width: 30%;
   margin-left: 70%;
 `;
@@ -58,7 +56,10 @@ const ShoppingCart = () => {
   const cartItems = useSelector(selectCartItems);
   const cartTotalAmount = useSelector(selectCartTotalAmount);
   const cartTotalQuantity = useSelector(selectCartTotalQuantity);
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  console.log('isLoggedIn', isLoggedIn);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const increaseCart = cartItem => {
     dispatch(ADD_TO_CART(cartItem));
   };
@@ -76,7 +77,20 @@ const ShoppingCart = () => {
   useEffect(() => {
     dispatch(CALCULATE_SUBTOTAL());
     dispatch(CALCULATE_TOTAL_QUANTITY());
+    dispatch(SAVE_URL(''));
   }, [dispatch, cartItems]);
+
+  const url = window.location.href;
+
+  const checkout = () => {
+    if (isLoggedIn) {
+      console.log('LOGIN');
+      navigate('/checkout-details');
+    } else {
+      dispatch(SAVE_URL(url));
+      navigate('/login');
+    }
+  };
   return (
     <div>
       <h2>Shopping Cart</h2>
@@ -156,7 +170,7 @@ const ShoppingCart = () => {
                 <p>{`$${cartTotalAmount.toFixed(2)}`}</p>
               </SubTotalWrapper>
               <p>Taxes and shipping calculated at checkout</p>
-              <CheckoutButton>Checkout</CheckoutButton>
+              <CheckoutButton onClick={checkout}>Checkout</CheckoutButton>
             </Card>
           </CardContainer>
         </>

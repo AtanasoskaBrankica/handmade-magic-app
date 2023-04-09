@@ -14,7 +14,6 @@ import Loader from '../loader/Loader';
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  border: 1px solid green;
   margin-bottom: 2rem;
 `;
 
@@ -43,10 +42,10 @@ const Product = () => {
   }, [data]);
   return (
     <Container>
-      <Aside style={{border: '1px solid red'}}>
+      <Aside>
         <ProductFilter />
       </Aside>
-      <ContainerProductList style={{border: '1px solid blue'}}>
+      <ContainerProductList>
         {isLoading ? <Loader /> : <ProductList products={products} />}
       </ContainerProductList>
     </Container>
