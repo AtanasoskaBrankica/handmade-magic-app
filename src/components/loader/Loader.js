@@ -1,7 +1,15 @@
 import classes from './Loader.module.css';
-import ReactDom from 'react-dom';
+import ReactDOM from 'react-dom';
+import loader from '../../assets/loader.gif';
 const Loader = () => {
-  return <span class="loader"></span>;
+  return ReactDOM.createPortal(
+    <div className={classes.wrapper}>
+      <div className={classes.loader}>
+        <img src={loader} alt="Loading..." />
+      </div>
+    </div>,
+    document.getElementById('loader')
+  );
 };
 
 export default Loader;

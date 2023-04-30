@@ -1,12 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import {toast} from 'react-toastify';
-import {deleteDoc, doc} from 'firebase/firestore';
-import {db, storage} from '../../../firebase/config';
-import {FiEdit} from 'react-icons/fi';
-import {BsTrash} from 'react-icons/bs';
-import {Link} from 'react-router-dom';
-import {deleteObject, ref} from 'firebase/storage';
-import Notiflix from 'notiflix';
 import {
   selectProducts,
   STORE_PRODUCTS,
@@ -20,6 +12,9 @@ import {
 } from '../../../redux/slice/filterSlice';
 import styled from 'styled-components';
 import Search from '../../search/Search';
+import {Title} from '../../shared/Title';
+import {ProductsTable} from '../../shared/Table';
+import Loader from '../../loader/Loader';
 
 const TopContainer = styled.div`
   height: 10%;
@@ -45,10 +40,6 @@ const SearchWrapper = styled.div`
   width: 60%;
 `;
 
-const Title = styled.h1`
-  margin: 0;
-`;
-
 const Products = () => {
   const [searchValue, setSearchValue] = useState('');
   const {data, isLoading} = useFetchCollection('products');
@@ -71,37 +62,11 @@ const Products = () => {
   useEffect(() => {
     dispatch(FILTER_BY_SEARCH({products, searchValue}));
   }, [searchValue, products]);
+  console.log('isLoading', isLoading);
 
-  const confirmDelete = (id, imageURL) => {
-    Notiflix.Confirm.show(
-      'Delete Product',
-      'Are you sure that you want to delete the product?',
-      'Delete',
-      'Cancel',
-      function okCb() {
-        deleteProduct(id, imageURL);
-      },
-      function cancelCb() {},
-      {
-        width: '320px',
-        borderRadius: '8px',
-      }
-    );
-  };
-
-  const deleteProduct = async (id, imageURL) => {
-    try {
-      await deleteDoc(doc(db, 'products', id));
-      const storageRef = ref(storage, imageURL);
-      await deleteObject(storageRef);
-      toast.success('Product deleted successfully');
-    } catch (error) {
-      toast.error(error.message);
-    }
-  };
   return (
     <>
-      {/* {isLoading && <Loader />} */}
+      {products.length === 0 && <Loader />}
       <div>
         <Title>All Products</Title>
         <TopContainer>
@@ -122,63 +87,7 @@ const Products = () => {
           <p>No products found.</p>
         ) : (
           <>
-            <table
-              style={{
-                width: '100%',
-                textAlign: 'center',
-                border: '1px solid grey',
-                borderCollapse: 'collapse',
-              }}
-            >
-              <thead
-                style={{
-                  fontSize: '1.2rem',
-
-                  background: 'lightgrey',
-                  color: 'white',
-                }}
-              >
-                <tr>
-                  <th>s/n</th>
-                  <th>Image</th>
-                  <th>Name</th>
-                  <th>Category</th>
-                  <th>Price</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody style={{fontSize: '1.2rem'}}>
-                {filteredProducts.map((product, index) => {
-                  const {id, name, price, category, imageURL} = product;
-                  return (
-                    <tr key={id} style={{border: '1px solid lightgrey'}}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <img
-                          src={imageURL}
-                          alt={name}
-                          style={{width: '150px'}}
-                        />
-                      </td>
-                      <td>{name}</td>
-                      <td>{category}</td>
-                      <td>{`$${price}`}</td>
-                      <td>
-                        <Link to={`/admin/add-product/${id}`}>
-                          <FiEdit size={20} color="green" />
-                        </Link>
-                        &nbsp;
-                        <BsTrash
-                          onClick={() => confirmDelete(id, imageURL)}
-                          size={18}
-                          color="red"
-                        />
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+            <ProductsTable filteredProducts={filteredProducts} />
             <Pagination
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}

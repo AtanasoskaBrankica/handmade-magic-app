@@ -16,10 +16,12 @@ import {
 } from '../../../redux/slice/orderSlice';
 import useFetchCollection from '../../../customHooks/useFetchCollection';
 import Chart from '../../chart/Chart';
+import {Title} from '../../shared/Title';
 const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding-top: 1rem;
 `;
 
 const ContainerChart = styled.div`
@@ -48,7 +50,7 @@ const Home = () => {
   }, [fbProducts, fbOrders]);
   return (
     <div>
-      <h1>Admin Home</h1>
+      <Title>Admin Home</Title>
       <Container>
         <InformationBox
           title="Earnings"

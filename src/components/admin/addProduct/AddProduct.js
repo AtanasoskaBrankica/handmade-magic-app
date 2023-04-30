@@ -13,6 +13,7 @@ import {db, storage} from '../../../firebase/config';
 import Card from '../../card/Card';
 import {useSelector} from 'react-redux';
 import {selectProducts} from '../../../redux/slice/productSlice';
+import {Button} from '../../shared/Button';
 
 const categories = [
   {id: 1, name: 'Jewelry & Accessories'},
@@ -39,6 +40,7 @@ const Wrapper = styled.div`
 
 const Title = styled.h1`
   text-align: center;
+  margin-top: 0;
 `;
 const Label = styled.label`
   margin-bottom: 0.5rem;
@@ -80,19 +82,6 @@ const TextArea = styled.textarea`
   font-size: 1rem;
 `;
 
-const SaveBtn = styled.button`
-  margin-left: 1rem;
-  margin-top: 1rem;
-
-  background-color: cornflowerblue;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-size: 1rem;
-
-  padding: 1rem;
-`;
-
 const Progress = styled.div`
   background-color: #aaa;
   border: 1px solid transparent;
@@ -114,6 +103,11 @@ const ProgressCard = styled.div`
 
   margin-left: 1rem;
   margin-top: -12px;
+`;
+
+const BtnWrapper = styled.div`
+  margin-left: 1rem;
+  margin-top: 1rem;
 `;
 
 const initialState = {
@@ -336,9 +330,11 @@ const AddProduct = () => {
                 onChange={handleInputChange}
               ></TextArea>
             </FormItem>{' '}
-            <SaveBtn type="submit">
-              {detectForm(id, 'Save Product', 'Edit Product')}
-            </SaveBtn>
+            <BtnWrapper>
+              <Button background="cornflowerblue" type="submit">
+                {detectForm(id, 'Save Product', 'Edit Product')}
+              </Button>
+            </BtnWrapper>
           </Form>
         </Card>
       </Wrapper>

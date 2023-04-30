@@ -8,12 +8,9 @@ import Loader from '../../components/loader/Loader';
 import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
 import styled from 'styled-components';
-
-const Wrapper = styled.div`
-  height: 70vh;
-  display: flex;
-  justify-content: space-between;
-`;
+import {AuthButton} from '../../components/shared/Button';
+import {Input} from '../../components/shared/Input';
+import {AuthWrapper} from '../../components/shared/Container';
 
 const ImageWrapper = styled.div`
   width: 50%;
@@ -40,27 +37,6 @@ const RegisterForm = styled.form`
   height: 80%;
   text-align: center;
   padding-bottom: 3rem;
-`;
-
-const Input = styled.input`
-  width: 70%;
-  height: 10%;
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
-  padding: 0.8rem;
-  border-radius: 10px;
-  border: 1px solid grey;
-`;
-
-const RegisterButton = styled.button`
-  width: 73%;
-  height: 10%;
-  font-size: 1.2rem;
-  background: salmon;
-  border: none;
-  color: white;
-  border-radius: 1rem;
-  padding: 0.5rem;
 `;
 
 const LoginWrapper = styled.div`
@@ -117,7 +93,7 @@ const Register = () => {
   return (
     <>
       {isLoading && <Loader />}
-      <Wrapper>
+      <AuthWrapper>
         <ImageWrapper>
           <img
             src={registerImage}
@@ -151,7 +127,9 @@ const Register = () => {
                   value={confirmPassword}
                   onChange={event => setConfirmPassword(event.target.value)}
                 />
-                <RegisterButton type="submit">Register</RegisterButton>
+                <AuthButton type="submit" background="salmon">
+                  Register
+                </AuthButton>
                 <LoginWrapper>
                   <LoginText>Already an account? </LoginText>
                   <LoginLinkWrapper>
@@ -162,7 +140,7 @@ const Register = () => {
             </Card>
           </RegisterFormWrapper>
         </RegisterWrapper>
-      </Wrapper>
+      </AuthWrapper>
     </>
   );
 };

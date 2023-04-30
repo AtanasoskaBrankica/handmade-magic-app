@@ -18,7 +18,7 @@ const ReviewContainer = styled.div`
 `;
 
 const ProductName = styled.p`
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 `;
 
 const ReviewContent = styled.div`
@@ -31,7 +31,7 @@ const ReviewContent = styled.div`
 const ProductInfo = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 40%;
 `;
 
 const ReviewTitle = styled.h1`
@@ -52,6 +52,11 @@ const ReviewButton = styled.button`
   border-radius: 10px;
 
   border: none;
+`;
+
+const ReviewLabel = styled.p`
+  font-size: 1.2rem;
+  font-weight: bold;
 `;
 const ReviewProducts = () => {
   const [rate, setRate] = useState(0);
@@ -98,31 +103,35 @@ const ReviewProducts = () => {
       <ReviewContainer>
         <ProductInfo>
           <ProductName>
-            <b>Product Name:</b>
+            <b>Product Name: </b>
             {product?.name}
           </ProductName>
-          <img src={product?.imageURL} alt={product?.name} width="300px" />
+          <img
+            src={product?.imageURL}
+            alt={product?.name}
+            style={{width: '70%'}}
+          />
         </ProductInfo>
 
         <ReviewContent>
           <Card>
             <Form onSubmit={e => submitProductReview(e)}>
-              <p>Rating:</p>
+              <ReviewLabel>Rating:</ReviewLabel>
               <StarsRating
                 value={rate}
                 onChange={value => {
                   setRate(value);
                 }}
               />
-              <p>Review:</p>
+              <ReviewLabel>Review:</ReviewLabel>
               <textarea
-                cols="30"
-                rows="10"
+                cols="60"
+                rows="15"
                 value={review}
                 required
                 onChange={e => setReview(e.target.value)}
               ></textarea>
-
+              <br />
               <ReviewButton type="submit">Submit Review</ReviewButton>
             </Form>
           </Card>

@@ -14,13 +14,15 @@ const List = styled.ul`
 `;
 const ListItem = styled.li`
   list-style-type: none;
-  border: 1px solid grey;
+  border: 1px solid lightgrey;
 
-  height: 1rem;
   display: flex;
-  padding: 0.7rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.2rem;
   flex-direction: row;
   text-align: center;
+  cursor: pointer;
 `;
 
 const Text = styled.p`

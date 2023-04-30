@@ -12,6 +12,15 @@ import useFetchDocument from '../../../customHooks/useFetchDocument';
 import Card from '../../card/Card';
 import useFetchCollection from '../../../customHooks/useFetchCollection';
 import StarsRating from 'react-star-rate';
+import {
+  BackButton,
+  Button,
+  DecreaseCartButton,
+  IncreaseCartButton,
+} from '../../shared/Button';
+import {BackLink} from '../../shared/Button';
+import {ProductLabel} from '../../shared/Text';
+import {CartQuantity} from '../../shared/Container';
 
 const Container = styled.div`
   height: 80vh;
@@ -37,35 +46,35 @@ const ImageContainer = styled.div`
 const ProductContent = styled.div`
   width: 40%;
 `;
-const Button = styled.button`
-  background: #ffae00;
-  color: white;
-  padding: 0.5rem;
-  font-size: 1.2rem;
-  border-radius: 8px;
-  border: none;
-`;
 
 const ImageWrapper = styled.div`
   width: 75%;
 `;
 
-const BackButton = styled.button`
-  background: lightgrey;
-
-  padding: 0.5rem;
-  font-size: 1.2rem;
-  border-radius: 8px;
-  border: none;
-`;
-
-const BackLink = styled(Link)`
-  text-decoration: none;
-  color: white;
-`;
-
 const ReviewsContainer = styled.div`
   margin-top: 2rem;
+`;
+
+const QuantityWrapper = styled.div`
+  width: 10%;
+  display: flex;
+  flexdirection: row;
+  height: 10%;
+`;
+
+const ReviewTitle = styled.h3`
+  padding-left: 1rem;
+  margin: 0;
+  padding-top: 1rem;
+`;
+
+const ReviewMessage = styled.p`
+  margin: 0;
+`;
+
+const Wrapper = styled.div`
+  margin-top: -1.5rem;
+  margin-bottom: 1rem;
 `;
 const ProductDetails = () => {
   const {id} = useParams();
@@ -121,34 +130,49 @@ const ProductDetails = () => {
           </ImageContainer>
 
           <ProductContent>
-            <h3 style={{fontSize: '1.5rem', marginTop: '0'}}>{product.name}</h3>
-            <p style={{fontSize: '1rem'}}>
+            <ProductLabel fontSize="1.5rem" marginTop="0">
+              {product.name}
+            </ProductLabel>
+            <ProductLabel fontSize="1.2rem">
               <b>Price:</b>
               {`$${product.price}`}
-            </p>
-            <p style={{fontSize: '1.2rem'}}>{product.desc}</p>
-            <p style={{fontSize: '1.2rem'}}>
+            </ProductLabel>
+            <ProductLabel fontSize="1.2rem">
+              <b>Description: </b>
+              {product.desc}
+            </ProductLabel>
+            <ProductLabel fontSize="1.2rem">
               <b>Brand:</b>
               {product.brand}
-            </p>
-            <div>
+            </ProductLabel>
+            <Wrapper>
               {isCartAdded < 0 ? null : (
                 <>
-                  <button onClick={() => decreaseCart(product)}>-</button>
-                  <p>
-                    <b>{cart.cartQuantity}</b>
-                  </p>
-                  <button onClick={() => addToCart(product)}>+</button>
+                  <QuantityWrapper>
+                    <DecreaseCartButton onClick={() => decreaseCart(product)}>
+                      -
+                    </DecreaseCartButton>
+                    <CartQuantity>
+                      <b>{cart.cartQuantity}</b>
+                    </CartQuantity>
+                    <IncreaseCartButton onClick={() => addToCart(product)}>
+                      +
+                    </IncreaseCartButton>
+                  </QuantityWrapper>
                 </>
               )}
-            </div>
-            <Button onClick={() => addToCart(product)}>Add To Cart</Button>
+            </Wrapper>
+            <Button background="#ffae00" onClick={() => addToCart(product)}>
+              Add To Cart
+            </Button>
             <ReviewsContainer>
               <Card>
-                <h3>Product Reviews</h3>
-                <div>
+                <ReviewTitle>Product Reviews</ReviewTitle>
+                <div style={{padding: '1rem'}}>
                   {filteredReviews.length === 0 ? (
-                    <p>There are no reviews for this product yet.</p>
+                    <ReviewMessage>
+                      There are no reviews for this product yet.
+                    </ReviewMessage>
                   ) : (
                     <>
                       {filteredReviews.map((item, index) => {
