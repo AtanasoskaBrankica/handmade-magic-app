@@ -16,8 +16,16 @@ import {
 } from '../../../redux/slice/orderSlice';
 import useFetchCollection from '../../../customHooks/useFetchCollection';
 import Chart from '../../chart/Chart';
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
 
-//Icons
+const ContainerChart = styled.div`
+  width: 70%;
+`;
+
 const earningIcon = <AiOutlineDollarCircle size={30} color="green" />;
 const productsIcon = <AiOutlineShoppingCart size={30} color="blue" />;
 const ordersIcon = <TfiShoppingCartFull size={30} color="orange" />;
@@ -41,7 +49,7 @@ const Home = () => {
   return (
     <div>
       <h1>Admin Home</h1>
-      <div>
+      <Container>
         <InformationBox
           title="Earnings"
           count={`${totalOrdersAmount}`}
@@ -57,10 +65,10 @@ const Home = () => {
           count={orders.length}
           icon={ordersIcon}
         />
-      </div>
-      <div>
+      </Container>
+      <ContainerChart>
         <Chart />
-      </div>
+      </ContainerChart>
     </div>
   );
 };

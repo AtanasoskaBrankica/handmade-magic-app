@@ -9,6 +9,25 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
+const BackButton = styled.button`
+  background: lightgrey;
+  width: 190px;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border: none;
+`;
+
+const BackLink = styled(Link)`
+  text-decoration: none;
+  color: white;
+`;
+
+const OrderInfo = styled.span`
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+`;
+
 const OrderDetails = () => {
   const {id} = useParams();
   const [order, setOrder] = useState(null);
@@ -20,27 +39,27 @@ const OrderDetails = () => {
   return (
     <Container>
       <h1>Order Details</h1>
-      <div>
-        <Link to="/admin/orders">&larr; Back To Orders</Link>
-      </div>
+      <BackButton>
+        <BackLink to="/admin/orders">&larr; Back To Orders</BackLink>
+      </BackButton>
       {order === null ? (
         <>{/* <div>LOADER</div> */}</>
       ) : (
         <>
-          <span>
-            <b>Order ID:</b>
+          <OrderInfo>
+            <b style={{marginRight: '0.5rem'}}>Order ID:</b>
             {order.id}
-          </span>
-          <span>
-            <b>Order Amount:</b>
+          </OrderInfo>
+          <OrderInfo>
+            <b style={{marginRight: '0.5rem'}}>Order Amount:</b>
             {order.orderAmount}
-          </span>
-          <span>
-            <b>Order Status:</b>
+          </OrderInfo>
+          <OrderInfo>
+            <b style={{marginRight: '0.5rem'}}>Order Status:</b>
             {order.orderStatus}
-          </span>
-          <span>
-            <b>Shipping Address:</b>
+          </OrderInfo>
+          <OrderInfo>
+            <b style={{marginRight: '0.5rem'}}>Shipping Address:</b>
             <br />
             Address: {order.shippingAddress?.line1},
             {order.shippingAddress?.line2},{order.shippingAddress?.city}
@@ -48,42 +67,57 @@ const OrderDetails = () => {
             State: {order.shippingAddress?.state}
             <br />
             Country: {order.shippingAddress?.country}
-          </span>
-          <table
-            style={{
-              width: '100%',
-              textAlign: 'center',
-            }}
-          >
-            <thead>
-              <tr>
-                <th>s/n</th>
-                <th>Product</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              {order.cartItems.map((cart, index) => {
-                const {id, name, price, imageURL, cartQuantity} = cart;
-                return (
-                  <tr key={id}>
-                    <td>{index + 1}</td>
-                    <td>
-                      <p>
-                        <b>{name}</b>
-                      </p>
-                      <img src={imageURL} alt={name} style={{width: '100px'}} />
-                    </td>
-                    <td>{`${price}`}</td>
-                    <td>{cartQuantity}</td>
-                    <td>{`${(price * cartQuantity).toFixed(2)}`}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+          </OrderInfo>
+          <div style={{marginTop: '2rem', marginBottom: '2rem'}}>
+            <table
+              style={{
+                width: '100%',
+                textAlign: 'center',
+                border: '1px solid grey',
+                borderCollapse: 'collapse',
+              }}
+            >
+              <thead
+                style={{
+                  fontSize: '1.2rem',
+
+                  background: 'lightgrey',
+                  color: 'white',
+                }}
+              >
+                <tr>
+                  <th>s/n</th>
+                  <th>Product</th>
+                  <th>Price</th>
+                  <th>Quantity</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody style={{fontSize: '1.2rem'}}>
+                {order.cartItems.map((cart, index) => {
+                  const {id, name, price, imageURL, cartQuantity} = cart;
+                  return (
+                    <tr key={id} style={{border: '1px solid lightgrey'}}>
+                      <td>{index + 1}</td>
+                      <td>
+                        <p style={{margin: '0'}}>
+                          <b>{name}</b>
+                        </p>
+                        <img
+                          src={imageURL}
+                          alt={name}
+                          style={{width: '200px'}}
+                        />
+                      </td>
+                      <td>{`${price}`}</td>
+                      <td>{cartQuantity}</td>
+                      <td>{`${(price * cartQuantity).toFixed(2)}`}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
           <OrderStatus order={order} id={id} />
         </>
       )}

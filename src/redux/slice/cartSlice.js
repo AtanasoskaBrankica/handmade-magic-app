@@ -19,22 +19,17 @@ const cartSlice = createSlice({
         item => item.id === action.payload.id
       );
       if (productIndex >= 0) {
-        //item already exists in the cart
-        //increase the cart quantity of that item
         state.cartItems[productIndex].cartQuantity += 1;
         toast.info(` ${action.payload.name} increased by one`, {
           position: 'top-left',
         });
       } else {
-        //item doesn't exists in the cart
-        //add item to the cart
         const tempProduct = {...action.payload, cartQuantity: 1};
         state.cartItems.push(tempProduct);
         toast.success(` ${action.payload.name} added to cart`, {
           position: 'top-left',
         });
       }
-      //save cart to localStorage
       localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
     },
     DECREASE_CART(state, action) {

@@ -10,7 +10,6 @@ const useFetchDocument = (collectionName, documentId) => {
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-      // console.log('Document data:', docSnap.data());
       const obj = {
         id: documentId,
         ...docSnap.data(),

@@ -7,7 +7,6 @@ const initialState = {
   userId: null,
 };
 
-//TO SET ACTIVE USER AND TO REMOVE ACTIVE USER
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -30,4 +29,5 @@ const authSlice = createSlice({
 export const {SET_ACTIVE_USER, REMOVE_ACTIVE_USER} = authSlice.actions;
 export const selectUserEmail = state => state.auth.email;
 export const selectUserId = state => state.auth.userId;
+export const selectUsername = state => state.auth.userName;
 export default authSlice.reducer;

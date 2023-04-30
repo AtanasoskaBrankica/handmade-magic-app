@@ -6,10 +6,41 @@ import styled from 'styled-components';
 import {db} from '../../../firebase/config';
 
 const Container = styled.div`
-  border: 1px solid red;
   width: 40%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
 `;
 
+const Title = styled.h4`
+  font-size: 1.5rem;
+  margin: 0;
+  margin-bottom: 1rem;
+`;
+
+const Select = styled.select`
+  font-size: 1.2rem;
+  padding: 0.8rem;
+`;
+
+const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const UpdateStatusButton = styled.button`
+  background: #ffae00;
+  color: white;
+  padding: 0.7rem;
+  font-size: 1rem;
+  width: 30%;
+  margin-top: 1rem;
+  border-radius: 10px;
+  border: none;
+`;
 const OrderStatus = ({order, id}) => {
   const [orderStatus, setOrderStatus] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -36,22 +67,25 @@ const OrderStatus = ({order, id}) => {
   return (
     <>
       {/* {isLoading && LOADER} */}
+
       <Container>
-        <h4>Update Order Status</h4>
+        <Title>Update Order Status</Title>
         <form onSubmit={event => changeOrderStatus(event, id)}>
-          <select
-            value={orderStatus}
-            onChange={event => setOrderStatus(event.target.value)}
-          >
-            <option value="" disabled>
-              -- Select one --
-            </option>
-            <option value="Order Placed...">Order Placed...</option>
-            <option value="Processing...">Processing...</option>
-            <option value="Shipped...">Shipped...</option>
-            <option value="Delivered">Delivered</option>
-          </select>
-          <button type="submit">Update Status</button>
+          <ContentWrapper>
+            <Select
+              value={orderStatus}
+              onChange={event => setOrderStatus(event.target.value)}
+            >
+              <option value="" disabled>
+                -- Select one --
+              </option>
+              <option value="Order Placed...">Order Placed...</option>
+              <option value="Processing...">Processing...</option>
+              <option value="Shipped...">Shipped...</option>
+              <option value="Delivered">Delivered</option>
+            </Select>
+            <UpdateStatusButton type="submit">Update Status</UpdateStatusButton>
+          </ContentWrapper>
         </form>
       </Container>
     </>

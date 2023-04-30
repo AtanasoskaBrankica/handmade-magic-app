@@ -5,37 +5,90 @@ import {
   FILTER_BY_BRAND,
   FILTER_BY_CATEGORY,
   FILTER_BY_PRICE,
+  SORT_PRODUCTS,
 } from '../../../redux/slice/filterSlice';
 import {
   selectMaxPrice,
   selectMinPrice,
   selectProducts,
 } from '../../../redux/slice/productSlice';
+import {RiArrowDropRightFill} from 'react-icons/ri';
 
-const FilterContainer = styled.div`
-  height: 100%;
-`;
+const FilterContainer = styled.div``;
 
 const CategoriesWrapper = styled.div`
   height: 50%;
-  border: 1px solid black;
 `;
+
+const SortWrapper = styled.div``;
+
 const BrandWrapper = styled.div`
   height: 20%;
-  border: 1px solid black;
 `;
 
 const PriceWrapper = styled.div`
   height: 20%;
-  border: 1px solid black;
 `;
 const Button = styled.button`
-  background: orangered;
+  background: #ffae00;
   color: white;
-  padding: 0.5rem;
+  padding: 0.7rem;
   font-size: 1rem;
+  margin-left: 7rem;
+  border-radius: 10px;
+  border: none;
 `;
 
+const CategoriesTitle = styled.h1`
+  text-align: center;
+`;
+const CategoriesContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-left: 1.5rem;
+`;
+
+const CategoriesButton = styled.button`
+  border: none;
+  background: white;
+  border-bottom: 1px solid lightgrey;
+  font-size: 1.2rem;
+  width: 50%;
+  text-align: left;
+  margin-bottom: 2.5rem;
+`;
+
+const BrandTitle = styled.h1`
+  padding-left: 7rem;
+  margin-top: 0;
+`;
+
+const SortTitle = styled.h1`
+  padding-left: 7rem;
+`;
+
+const SortContent = styled.div`
+  padding-left: 7rem;
+`;
+const BrandContent = styled.div`
+  padding-left: 7rem;
+`;
+const Select = styled.select`
+  border-radius: 15px;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+`;
+
+const PriceTitle = styled.h1`
+  padding-left: 7rem;
+`;
+
+const PriceContent = styled.div`
+  padding-left: 7rem;
+  font-size: 1.2rem;
+`;
 const ProductFilter = () => {
   const [category, setCategory] = useState('All');
   const [brand, setBrand] = useState('All');
@@ -43,6 +96,7 @@ const ProductFilter = () => {
   const products = useSelector(selectProducts);
   const minPrice = useSelector(selectMinPrice);
   const maxPrice = useSelector(selectMaxPrice);
+  const [sort, setSort] = useState('latest');
   const allCategories = [
     'All',
     ...new Set(products.map(product => product.category)),
@@ -64,6 +118,10 @@ const ProductFilter = () => {
     dispatch(FILTER_BY_PRICE({products, price}));
   }, [products, price]);
 
+  useEffect(() => {
+    dispatch(SORT_PRODUCTS({products, sort}));
+  }, [sort, products]);
+
   const clearFilters = () => {
     setCategory('All');
     setBrand('All');
@@ -72,43 +130,62 @@ const ProductFilter = () => {
   return (
     <FilterContainer>
       <CategoriesWrapper>
-        <h4>Categories</h4>
-        {allCategories.map((category, index) => {
-          return (
-            <button
-              key={index}
-              type="button"
-              onClick={() => filterProducts(category)}
-            >
-              {category}
-            </button>
-          );
-        })}
-      </CategoriesWrapper>
-      <BrandWrapper>
-        <h4>Brand</h4>
-        <select value={brand} onChange={e => setBrand(e.target.value)}>
-          {allBrands.map((brand, index) => {
+        <CategoriesTitle>Categories</CategoriesTitle>
+        <CategoriesContent>
+          {allCategories.map((category, index) => {
             return (
-              <option key={index} value={brand}>
-                {brand}
-              </option>
+              <CategoriesButton
+                key={index}
+                type="button"
+                onClick={() => filterProducts(category)}
+              >
+                <RiArrowDropRightFill />
+                {category}
+              </CategoriesButton>
             );
           })}
-        </select>
+        </CategoriesContent>
+      </CategoriesWrapper>
+      <BrandWrapper>
+        <BrandTitle>Brand</BrandTitle>
+        <BrandContent>
+          <Select value={brand} onChange={e => setBrand(e.target.value)}>
+            {allBrands.map((brand, index) => {
+              return (
+                <option key={index} value={brand}>
+                  {brand}
+                </option>
+              );
+            })}
+          </Select>
+        </BrandContent>
       </BrandWrapper>
+      <SortWrapper>
+        <SortTitle>Sort By</SortTitle>
+        <SortContent>
+          <Select value={sort} onChange={e => setSort(e.target.value)}>
+            <option value="latest">Latest</option>
+            <option value="lowest-price">Lowest Price</option>
+            <option value="highest-price">Highest Price</option>
+            <option value="a-z">A - Z</option>
+            <option value="z-a">Z - A</option>
+          </Select>
+        </SortContent>
+      </SortWrapper>
       <PriceWrapper>
-        <h4>Price</h4>
-        <p>{`$${price}`}</p>
-        <div>
-          <input
-            type="range"
-            value={price}
-            onChange={e => setPrice(e.target.value)}
-            min={minPrice}
-            max={maxPrice}
-          />
-        </div>
+        <PriceTitle>Price</PriceTitle>
+        <PriceContent>
+          <p style={{marginBottom: '0'}}>{`$${price}`}</p>
+          <div>
+            <input
+              type="range"
+              value={price}
+              onChange={e => setPrice(e.target.value)}
+              min={minPrice}
+              max={maxPrice}
+            />
+          </div>
+        </PriceContent>
       </PriceWrapper>
       <Button onClick={clearFilters}>Clear Filters</Button>
     </FilterContainer>

@@ -2,22 +2,18 @@ import React from 'react';
 import Card from '../../card/Card';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
-import {connectAuthEmulator} from 'firebase/auth';
 import {
   ADD_TO_CART,
   CALCULATE_TOTAL_QUANTITY,
 } from '../../../redux/slice/cartSlice';
 import {useDispatch} from 'react-redux';
 
-const Container = styled.div`
-  border: 1px solid;
-  height: 100%;
-`;
-
 const Item = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 380px;
+
+  background-color: white;
 `;
 const ImageContainer = styled.div`
   display: flex;
@@ -36,20 +32,21 @@ const ProductPrice = styled.div`
 
   justify-content: center;
   height: 50%;
-  color: red;
 `;
 const ProductName = styled.div`
   display: flex;
-
+  font-size: 1.3rem;
   justify-content: center;
   height: 50%;
 `;
 
 const Button = styled.button`
-  background: orangered;
+  background: #ffae00;
   color: white;
   padding: 0.5rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border: none;
 `;
 const ProductItem = ({product, id, name, price, desc, imageURL}) => {
   const dispatch = useDispatch();
@@ -70,13 +67,13 @@ const ProductItem = ({product, id, name, price, desc, imageURL}) => {
       <Item>
         <ImageContainer>
           <Link to={`/product-details/${id}`}>
-            <img style={{width: '200px'}} src={imageURL} alt={name} />
+            <img style={{width: '250px'}} src={imageURL} alt={name} />
           </Link>
         </ImageContainer>
 
         <ProductInfoContainer>
-          <ProductPrice>{`$${price}`}</ProductPrice>
           <ProductName>{shorthenText(name, 18)}</ProductName>
+          <ProductPrice>{`$${price}`}</ProductPrice>
         </ProductInfoContainer>
         <Button onClick={() => addToCart(product)}>Add To Cart</Button>
       </Item>

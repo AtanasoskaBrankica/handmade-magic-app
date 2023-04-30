@@ -20,7 +20,7 @@ import {
 
 const HeaderWrapper = styled.header`
   height: 8rem;
-  background-color: antiquewhite;
+  background-color:#C1B199;
   color: black;
   display: flex;
   justify-content: space-between;
@@ -43,11 +43,14 @@ const LogoWrapper = styled.div`
 `;
 
 const MiddleWrapper = styled.div`
-  width: 25%;
+  width: 18%;
   height: 8rem;
 
   display: flex;
   justify-content: space-between;
+  @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Dancing+Script:wght@600;700&family=Exo+2:wght@300&family=Karla:wght@200&family=Montserrat+Alternates:ital,wght@0,500;1,900&family=PT+Serif&family=Playfair+Display:ital@1&family=Quicksand:wght@400;500&family=Roboto:wght@100&family=Space+Grotesk&family=Ysabeau:ital,wght@0,1;0,900;1,1;1,900;1,1000&display=swap');
+  font-family: 'Ysabeau', sans-serif;
+  font-weight: bold;
 `;
 
 const RightWrapper = styled.div`
@@ -55,44 +58,68 @@ const RightWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   width: 25%;
+  font-weight: bold;
+  width: 32%;
+
+  padding-left: 3rem;
 `;
 
 const LogoLink = styled(Link)`
   text-decoration: none;
-  color: black;
-  font-size: 2rem;
+  color: white;
+  font-size: 2.5rem;
+  @import url('https://fonts.googleapis.com/css2?family=Karla:wght@200&family=PT+Serif&family=Playfair+Display:ital@1&family=Quicksand:wght@300&family=Roboto:wght@100&display=swap');
+
+  font-family: 'Dancing Script', cursive, 'Karla', sans-serif,
+    'Playfair Display', serif, 'PT Serif', serif, 'Quicksand', sans-serif,
+    'Roboto', sans-serif;
 `;
 
 const Admin = styled.div`
-  width: 20%;
+  flex: 1;
   text-align: center;
-  padding-top: 2rem;
+  padding-top: 3rem;
 `;
 
 const Home = styled.div`
-  width: 20%;
+  flex: 1;
   text-align: center;
   padding-top: 3rem;
 `;
 
 const ContactUs = styled.div`
-  width: 20%;
+  flex: 1;
   text-align: center;
   padding-top: 3rem;
 `;
 
 const HeaderNavLink = styled(NavLink)`
   text-decoration: none;
-  color: black;
+  color: white;
+  font-size: 1.2rem;
+  @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Dancing+Script:wght@600;700&family=Exo+2:ital,wght@0,300;0,400;1,300&family=Kanit:wght@300&family=Karla:wght@200&family=Montserrat+Alternates:ital,wght@0,500;1,900&family=PT+Serif&family=Playfair+Display:ital@1&family=Poltawski+Nowy:ital@1&family=Quicksand:wght@400;500&family=Roboto:wght@100&family=Space+Grotesk&family=Ysabeau:ital,wght@0,1;0,900;1,1;1,900;1,1000&display=swap');
+  font-family: 'Dancing Script', cursive;
 `;
 
 const HeaderLink = styled(Link)`
   text-decoration: none;
-  color: black;
+  color: white;
+  font-size: 1.2rem;
+  @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Dancing+Script:wght@600;700&family=Exo+2:ital,wght@0,300;0,400;1,300&family=Kanit:wght@300&family=Karla:wght@200&family=Montserrat+Alternates:ital,wght@0,500;1,900&family=PT+Serif&family=Playfair+Display:ital@1&family=Poltawski+Nowy:ital@1&family=Quicksand:wght@400;500&family=Roboto:wght@100&family=Space+Grotesk&family=Ysabeau:ital,wght@0,1;0,900;1,1;1,900;1,1000&display=swap');
+  font-family: 'Dancing Script', cursive;
+`;
+
+const HeaderUserLink = styled(Link)`
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem;
+  @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Dancing+Script:wght@600;700&family=Exo+2:ital,wght@0,300;0,400;1,300&family=Kanit:wght@300&family=Karla:wght@200&family=Montserrat+Alternates:ital,wght@0,500;1,900&family=PT+Serif&family=Playfair+Display:ital@1&family=Poltawski+Nowy:ital@1&family=Quicksand:wght@400;500&family=Roboto:wght@100&family=Space+Grotesk&family=Ysabeau:ital,wght@0,1;0,900;1,1;1,900;1,1000&display=swap');
+  font-family: 'Dancing Script', cursive;
+  padding-right: 7px;
 `;
 
 const UserName = styled.div`
-  width: 20%;
+  width: 23%;
   text-align: center;
   padding-top: 3rem;
 `;
@@ -101,6 +128,7 @@ const Orders = styled.div`
   width: 20%;
   text-align: center;
   padding-top: 3rem;
+  b
 `;
 
 const Logout = styled.div`
@@ -120,14 +148,19 @@ const CartNumber = styled.span`
 `;
 
 const AdminButton = styled.button`
-  padding: 1rem 2rem;
   border: none;
-  font-size: 1rem;
-  border-radius: 1rem;
+  font-size: 1.2rem;
+
   cursor: pointer;
+  @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Dancing+Script:wght@600;700&family=Exo+2:ital,wght@0,300;0,400;1,300&family=Kanit:wght@300&family=Karla:wght@200&family=Montserrat+Alternates:ital,wght@0,500;1,900&family=PT+Serif&family=Playfair+Display:ital@1&family=Poltawski+Nowy:ital@1&family=Quicksand:wght@400;500&family=Roboto:wght@100&family=Space+Grotesk&family=Ysabeau:ital,wght@0,1;0,900;1,1;1,900;1,1000&display=swap');
+  font-family: 'Dancing Script', cursive;
+  background: none;
+  color: white;
+  font-weight: bold;
+
+  text-decoration: underline;
 `;
 
-// const activeLink = ({isActive}) => (isActive ? `${classes.active}` : '');
 const Header = () => {
   const navigate = useNavigate();
   const [userName, setUsername] = useState('');
@@ -149,7 +182,6 @@ const Header = () => {
 
   window.addEventListener('scroll', fixNavBar);
 
-  //Monitor currently sign-in user
   useEffect(() => {
     onAuthStateChanged(auth, user => {
       if (user) {
@@ -211,14 +243,11 @@ const Header = () => {
       </MiddleWrapper>
       <RightWrapper>
         <UserName>
-          <ShowOnLogout>
-            <HeaderNavLink to="/login">Login</HeaderNavLink>
-          </ShowOnLogout>
           <ShowOnLogin>
-            <HeaderLink href="#home">
-              <FaUserAlt />
-              Hi, {userName}
-            </HeaderLink>
+            <HeaderUserLink href="#home">
+              <FaUserAlt size={15} />
+              Hi,{userName}
+            </HeaderUserLink>
           </ShowOnLogin>
         </UserName>
         <Orders>
@@ -233,13 +262,21 @@ const Header = () => {
             </HeaderNavLink>
           </ShowOnLogin>
         </Logout>
+
         <Cart>
-          <HeaderLink to="/cart">
-            Cart
-            <GiShoppingCart size={20} />
-            <CartNumber>{cartTotalQuantity}</CartNumber>
-          </HeaderLink>
+          <ShowOnLogin>
+            <HeaderLink to="/cart">
+              Cart
+              <GiShoppingCart size={20} />
+              <CartNumber>{cartTotalQuantity}</CartNumber>
+            </HeaderLink>
+          </ShowOnLogin>
         </Cart>
+        <UserName>
+          <ShowOnLogout>
+            <HeaderNavLink to="/login">Login</HeaderNavLink>
+          </ShowOnLogout>
+        </UserName>
       </RightWrapper>
     </HeaderWrapper>
   );

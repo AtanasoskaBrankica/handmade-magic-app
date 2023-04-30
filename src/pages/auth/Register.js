@@ -34,27 +34,33 @@ const RegisterFormWrapper = styled.div`
 
 const RegisterTitle = styled.h2`
   text-align: center;
+  padding-top: 1rem;
 `;
 const RegisterForm = styled.form`
   height: 80%;
   text-align: center;
+  padding-bottom: 3rem;
 `;
 
 const Input = styled.input`
   width: 70%;
   height: 10%;
   margin-bottom: 1rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  padding: 0.8rem;
+  border-radius: 10px;
+  border: 1px solid grey;
 `;
 
 const RegisterButton = styled.button`
   width: 73%;
   height: 10%;
-  font-size: 1rem;
-  background-color: #007bff;
+  font-size: 1.2rem;
+  background: salmon;
   border: none;
   color: white;
   border-radius: 1rem;
+  padding: 0.5rem;
 `;
 
 const LoginWrapper = styled.div`
@@ -62,8 +68,10 @@ const LoginWrapper = styled.div`
   height: 10%;
   margin-left: 2rem;
   display: flex;
-  font-size: 1rem;
+
   margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
 `;
 
 const LoginText = styled.div`
@@ -80,6 +88,7 @@ const LoginLink = styled(Link)`
   text-decoration: none;
   color: black;
   font-weight: bold;
+  padding-left: 3px;
 `;
 const Register = () => {
   const [email, setEmail] = useState('');

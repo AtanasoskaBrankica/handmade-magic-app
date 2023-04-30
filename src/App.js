@@ -10,6 +10,7 @@ import Checkout from './pages/checkout/Checkout';
 import CheckoutSuccess from './pages/checkout/CheckoutSuccess';
 import Orders from './pages/orders/Orders';
 import OrderDetails from './pages/orderDetails/OrderDetails';
+import ReviewProducts from './components/reviewProducts/ReviewProducts';
 
 function App() {
   return (
@@ -23,7 +24,6 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/reset" element={<Reset />} />
-          {/* this route will be accesible only for the admin*/}
           <Route
             path="/admin/*"
             element={
@@ -39,6 +39,7 @@ function App() {
           <Route path="/checkout-success" element={<CheckoutSuccess />} />
           <Route path="/order-history" element={<Orders />} />
           <Route path="/order-details/:id" element={<OrderDetails />} />
+          <Route path="/review-product/:id" element={<ReviewProducts />} />
         </Routes>
         <Footer />
       </BrowserRouter>
