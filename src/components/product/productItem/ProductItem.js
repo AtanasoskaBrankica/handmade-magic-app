@@ -47,7 +47,9 @@ const Button = styled.button`
   font-size: 1.2rem;
   border-radius: 8px;
   border: none;
+  cursor: pointer;
 `;
+
 const ProductItem = ({product, id, name, price, desc, imageURL}) => {
   const dispatch = useDispatch();
   const shorthenText = (text, n) => {

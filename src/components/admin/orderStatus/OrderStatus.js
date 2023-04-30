@@ -4,6 +4,7 @@ import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
 import styled from 'styled-components';
 import {db} from '../../../firebase/config';
+import {Button} from '../../shared/Button';
 
 const Container = styled.div`
   width: 40%;
@@ -31,15 +32,8 @@ const ContentWrapper = styled.div`
   flex-direction: column;
 `;
 
-const UpdateStatusButton = styled.button`
-  background: #ffae00;
-  color: white;
-  padding: 0.7rem;
-  font-size: 1rem;
-  width: 30%;
+const BtnWrapper = styled.div`
   margin-top: 1rem;
-  border-radius: 10px;
-  border: none;
 `;
 const OrderStatus = ({order, id}) => {
   const [orderStatus, setOrderStatus] = useState('');
@@ -84,7 +78,11 @@ const OrderStatus = ({order, id}) => {
               <option value="Shipped...">Shipped...</option>
               <option value="Delivered">Delivered</option>
             </Select>
-            <UpdateStatusButton type="submit">Update Status</UpdateStatusButton>
+            <BtnWrapper>
+              <Button background="#ffae00" type="submit">
+                Update Status
+              </Button>
+            </BtnWrapper>
           </ContentWrapper>
         </form>
       </Container>

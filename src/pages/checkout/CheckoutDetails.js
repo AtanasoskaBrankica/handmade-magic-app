@@ -9,6 +9,8 @@ import {
 } from '../../redux/slice/checkoutSlice';
 import {useNavigate} from 'react-router-dom';
 import CheckoutSummary from '../../components/checkoutSummary/CheckoutSummary';
+import {Btn} from '../../components/shared/Button';
+import classes from './CheckoutDetails.module.css';
 
 const initialAddress = {
   name: '',
@@ -84,16 +86,7 @@ const Title = styled.h2`
   font-size: 2rem;
 `;
 
-const Button = styled.button`
-  background: cornflowerblue;
-  color: white;
-  width: 70%;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  font-size: 1.2rem;
-  border-radius: 10px;
-  margin-left: 1rem;
-  border: none;
+const BtnWrapper = styled.div`
   margin-top: 1rem;
 `;
 
@@ -203,6 +196,14 @@ const CheckoutDetails = () => {
                 <FormItem>
                   <CountryDropdown
                     valueType="short"
+                    style={{
+                      fontSize: '1.2rem',
+                      marginTop: '0.5rem',
+
+                      width: '570px',
+                      padding: '1rem',
+                      borderRadius: '10px',
+                    }}
                     value={shippingAddress.country}
                     onChange={value =>
                       handleShippingAddress({
@@ -291,6 +292,13 @@ const CheckoutDetails = () => {
                 <FormItemDropdown>
                   <CountryDropdown
                     valueType="short"
+                    style={{
+                      fontSize: '1.2rem',
+                      marginTop: '0.5rem',
+                      width: '570px',
+                      padding: '1rem',
+                      borderRadius: '10px',
+                    }}
                     value={billingAddress.country}
                     onChange={value =>
                       handleBillingAddress({
@@ -313,7 +321,9 @@ const CheckoutDetails = () => {
                   />
                 </FormItem>
               </Wrapper>
-              <Button type="submit">Proceed To Checkout</Button>
+              <BtnWrapper>
+                <Btn type="submit">Proceed To Checkout</Btn>
+              </BtnWrapper>
             </ShippingForm>
           </LeftWrapper>
         </Card>

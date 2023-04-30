@@ -46,7 +46,6 @@ const Grid = styled.div`
 const ProductList = ({products}) => {
   const [searchValue, setSearchValue] = useState('');
   const filteredProducts = useSelector(selectFilteredProducts);
-  console.log('filteredProducts', filteredProducts);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage, setProductsPerPage] = useState(9);
   const indexOfLastProduct = currentPage * productsPerPage;
@@ -60,7 +59,6 @@ const ProductList = ({products}) => {
     dispatch(FILTER_BY_SEARCH({products, searchValue}));
   }, [searchValue, products]);
 
-  console.log('products==>', products);
   return (
     <Container id="product">
       <TopContainer>

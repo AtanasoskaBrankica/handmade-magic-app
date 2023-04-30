@@ -4,9 +4,9 @@ import {useSelector} from 'react-redux';
 import {NavLink} from 'react-router-dom';
 import {FaUser} from 'react-icons/fa';
 const NavbarWrapper = styled.div`
-  background-color: white;
-
-  border: 1px solid lightgrey;
+  background-color: #c1b199;
+  color: white;
+  border: 1px solid white;
   border-bottom: 0px;
   height: 100%;
 `;
@@ -14,7 +14,7 @@ const UserProfile = styled.div`
   height: 15vh;
   border-bottom: 1px solid lightgrey;
   padding-top: 1rem;
-  background: lightgrey;
+  background: #b59f84;
 `;
 const UserWrapper = styled.div`
   width: 20%;
@@ -29,7 +29,7 @@ const NavBar = styled.nav`
   padding-top: 5px;
 `;
 const NavBarItem = styled.div`
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid white;
   padding-top: 1rem;
   padding-bottom: 1rem;
   display: flex;
@@ -39,7 +39,8 @@ const NavBarItem = styled.div`
 
 const StyledNavLink = styled(NavLink)`
   text-decoration: none;
-  color: black;
+  color: white;
+  font-weight: bold;
 `;
 
 const Navbar = () => {

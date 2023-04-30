@@ -6,22 +6,18 @@ import {auth} from '../../firebase/config';
 import {toast} from 'react-toastify';
 import Loader from '../../components/loader/Loader';
 import styled from 'styled-components';
-
-const Wrapper = styled.div`
-  height: 70vh;
-  display: flex;
-  justify-content: space-between;
-`;
-
-const ImageWrapper = styled.div`
-  width: 50%;
-  padding-top: 1rem;
-  text-align: right;
-`;
+import {AuthButton} from '../../components/shared/Button';
+import {Input} from '../../components/shared/Input';
+import {AuthWrapper} from '../../components/shared/Container';
 
 const ResetWrapper = styled.div`
   width: 50%;
   padding-top: 10rem;
+`;
+const ImageWrapper = styled.div`
+  width: 50%;
+  padding-top: 1rem;
+  text-align: right;
 `;
 
 const ResetFormWrapper = styled.div`
@@ -39,26 +35,6 @@ const ResetForm = styled.form`
   padding-bottom: 2rem;
 `;
 
-const Input = styled.input`
-  width: 70%;
-  height: 10%;
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
-  padding: 0.8rem;
-  border-radius: 10px;
-  border: 1px solid grey;
-`;
-
-const ResetButton = styled.button`
-  width: 73%;
-  height: 10%;
-  font-size: 1.2rem;
-  background: dodgerblue;
-  border: none;
-  color: white;
-  border-radius: 1rem;
-  padding: 0.5rem;
-`;
 const Reset = () => {
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -77,7 +53,7 @@ const Reset = () => {
   return (
     <>
       {isLoading && <Loader />}
-      <Wrapper>
+      <AuthWrapper>
         <ImageWrapper>
           <img src={forgotPasswordImage} alt="Forgot Password Image" />
         </ImageWrapper>
@@ -93,12 +69,14 @@ const Reset = () => {
                   value={email}
                   onChange={event => setEmail(event.target.value)}
                 />
-                <ResetButton type="submit">Reset Password</ResetButton>
+                <AuthButton background="dodgerblue" type="submit">
+                  Reset Password
+                </AuthButton>
               </ResetForm>
             </Card>
           </ResetFormWrapper>
         </ResetWrapper>
-      </Wrapper>
+      </AuthWrapper>
     </>
   );
 };

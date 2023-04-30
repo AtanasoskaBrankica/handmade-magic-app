@@ -12,11 +12,13 @@ import {GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
 import styled from 'styled-components';
 import {useSelector} from 'react-redux';
 import {selectPreviousURL} from '../../redux/slice/cartSlice';
+import {AuthButton} from '../../components/shared/Button';
+import {Input} from '../../components/shared/Input';
+import {AuthWrapper} from '../../components/shared/Container';
 
-const AuthWrapper = styled.div`
-  height: 70vh;
-  display: flex;
-  justify-content: space-between;
+const LoginWrapper = styled.div`
+  width: 50%;
+  padding-top: 7rem;
 `;
 
 const ImageWrapper = styled.div`
@@ -25,37 +27,11 @@ const ImageWrapper = styled.div`
   text-align: right;
 `;
 
-const LoginWrapper = styled.div`
-  width: 50%;
-  padding-top: 7rem;
-`;
-
 const LoginFormWrapper = styled.div`
   width: 60%;
   height: 80%;
 `;
 
-const LoginButton = styled.button`
-  width: 73%;
-  height: 10%;
-  font-size: 1.2rem;
-  background: cornflowerblue;
-  border: none;
-  color: white;
-  border-radius: 1rem;
-  padding: 0.5rem;
-`;
-
-const LoginBtnWithGoogle = styled.button`
-  width: 73%;
-  height: 10%;
-  font-size: 1.2rem;
-  background-color: pink;
-  border: none;
-  color: white;
-  border-radius: 1rem;
-  padding: 0.5rem;
-`;
 const LoginTitle = styled.h2`
   text-align: center;
   padding-top: 2rem;
@@ -65,16 +41,6 @@ const LoginTitle = styled.h2`
 const LoginForm = styled.form`
   height: 80%;
   text-align: center;
-`;
-
-const Input = styled.input`
-  width: 70%;
-  height: 10%;
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
-  padding: 0.8rem;
-  border-radius: 10px;
-  border: 1px solid grey;
 `;
 
 const ResetLinkWrapper = styled.div`
@@ -127,6 +93,7 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const previousURL = useSelector(selectPreviousURL);
   const navigate = useNavigate();
+  console.log('email', email);
 
   const redirectUser = () => {
     if (previousURL.includes('cart')) {
@@ -141,9 +108,10 @@ const Login = () => {
     setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then(userCredential => {
-        const user = userCredential.user;
         toast.success('Login Successful!');
         redirectUser();
+        setEmail('');
+        setPassword('');
       })
       .catch(error => {
         toast.error(error.message);
@@ -152,11 +120,10 @@ const Login = () => {
     setIsLoading(false);
   };
 
+  const provider = new GoogleAuthProvider();
   const loginWithGoogle = () => {
-    const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then(result => {
-        const user = result.user;
         toast.success('Login successfully!');
         redirectUser();
       })
@@ -190,19 +157,22 @@ const Login = () => {
                   value={password}
                   onChange={event => setPassword(event.target.value)}
                 />
-                <LoginButton type="submit">Login</LoginButton>
+
+                <AuthButton type="submit" background="cornflowerblue">
+                  Login
+                </AuthButton>
                 <ResetLinkWrapper>
                   <ResetLink to="/reset">Forggot Password?</ResetLink>
                 </ResetLinkWrapper>
                 <Text>-- or --</Text>
-                <LoginBtnWithGoogle onClick={loginWithGoogle}>
+                <AuthButton background="pink" onClick={loginWithGoogle}>
                   <AiOutlineGoogle
                     color="white"
                     size="20"
                     style={{marginRight: '5px', marginTop: '-4px'}}
                   />
                   Login With Google
-                </LoginBtnWithGoogle>
+                </AuthButton>
                 <RegisterWrapper>
                   <RegisterText>Don't have an account? </RegisterText>
                   <RegisterLinkWrapper>
