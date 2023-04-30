@@ -21,7 +21,7 @@ const ImageWrapper = styled.div`
 
 const ResetWrapper = styled.div`
   width: 50%;
-  padding-top: 7rem;
+  padding-top: 10rem;
 `;
 
 const ResetFormWrapper = styled.div`
@@ -31,27 +31,33 @@ const ResetFormWrapper = styled.div`
 
 const ResetTitle = styled.h2`
   text-align: center;
+  padding-top: 0.5rem;
 `;
 const ResetForm = styled.form`
   height: 80%;
   text-align: center;
+  padding-bottom: 2rem;
 `;
 
 const Input = styled.input`
   width: 70%;
   height: 10%;
   margin-bottom: 1rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  padding: 0.8rem;
+  border-radius: 10px;
+  border: 1px solid grey;
 `;
 
 const ResetButton = styled.button`
   width: 73%;
   height: 10%;
-  font-size: 1rem;
-  background-color: #007bff;
+  font-size: 1.2rem;
+  background: dodgerblue;
   border: none;
   color: white;
   border-radius: 1rem;
+  padding: 0.5rem;
 `;
 const Reset = () => {
   const [email, setEmail] = useState('');

@@ -38,25 +38,29 @@ const LoginFormWrapper = styled.div`
 const LoginButton = styled.button`
   width: 73%;
   height: 10%;
-  font-size: 1rem;
-  background-color: #007bff;
+  font-size: 1.2rem;
+  background: cornflowerblue;
   border: none;
   color: white;
   border-radius: 1rem;
+  padding: 0.5rem;
 `;
 
 const LoginBtnWithGoogle = styled.button`
   width: 73%;
   height: 10%;
-  font-size: 1rem;
-  background-color: #007bff;
+  font-size: 1.2rem;
+  background-color: pink;
   border: none;
   color: white;
   border-radius: 1rem;
-  background-color: orangered;
+  padding: 0.5rem;
 `;
 const LoginTitle = styled.h2`
   text-align: center;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  font-size: 1.5rem;
 `;
 const LoginForm = styled.form`
   height: 80%;
@@ -67,7 +71,10 @@ const Input = styled.input`
   width: 70%;
   height: 10%;
   margin-bottom: 1rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  padding: 0.8rem;
+  border-radius: 10px;
+  border: 1px solid grey;
 `;
 
 const ResetLinkWrapper = styled.div`
@@ -78,15 +85,20 @@ const ResetLinkWrapper = styled.div`
 const ResetLink = styled(Link)`
   text-decoration: none;
   color: black;
+  font-size: 1rem;
+  font-weight: bold;
 `;
 
 const RegisterWrapper = styled.div`
-  width: 70%;
+  width: 80%;
+
   height: 10%;
-  margin-left: 3rem;
+  margin-left: 1.3rem;
   display: flex;
-  font-size: 1rem;
+  font-size: 16px;
   margin-top: 1rem;
+  font-weight: bold;
+  margin-bottom: 2.5rem;
 `;
 
 const RegisterText = styled.div`
@@ -103,6 +115,7 @@ const RegisterLink = styled(Link)`
   text-decoration: none;
   color: black;
   font-weight: bold;
+  padding-left: 3px;
 `;
 
 const Text = styled.p`
@@ -179,14 +192,14 @@ const Login = () => {
                 />
                 <LoginButton type="submit">Login</LoginButton>
                 <ResetLinkWrapper>
-                  <ResetLink to="/reset">Forggot Password</ResetLink>
+                  <ResetLink to="/reset">Forggot Password?</ResetLink>
                 </ResetLinkWrapper>
                 <Text>-- or --</Text>
                 <LoginBtnWithGoogle onClick={loginWithGoogle}>
                   <AiOutlineGoogle
                     color="white"
                     size="20"
-                    style={{marginRight: '5px'}}
+                    style={{marginRight: '5px', marginTop: '-4px'}}
                   />
                   Login With Google
                 </LoginBtnWithGoogle>

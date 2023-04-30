@@ -1,16 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {
-  PaymentElement,
-  LinkAuthenticationElement,
-  useStripe,
-  useElements,
-} from '@stripe/react-stripe-js';
-import Checkout from '../../pages/checkout/Checkout';
+import {PaymentElement, useStripe, useElements} from '@stripe/react-stripe-js';
 import CheckoutSummary from '../checkoutSummary/CheckoutSummary';
 import {toast} from 'react-toastify';
-import '../checkoutForm/CheckoutForm.css';
 import styled from 'styled-components';
-import {Navigate, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {selectUserEmail, selectUserId} from '../../redux/slice/authSlice';
 import {
@@ -110,19 +103,16 @@ const CheckoutForm = () => {
       .confirmPayment({
         elements,
         confirmParams: {
-          // Make sure to change this to your payment completion page
           return_url: 'http://localhost:3000/checkout-success',
         },
         redirect: 'if_required',
       })
       .then(result => {
-        //bad result - error
         if (result.error) {
           toast.error(result.error.message);
           setMessage(result.error.message);
           return;
         }
-        //ok -paymentIntent
         if (result.paymentIntent) {
           if (result.paymentIntent.status === 'succeeded') {
             setIsLoading(false);
@@ -150,12 +140,7 @@ const CheckoutForm = () => {
           </CheckoutSummaryWrapper>
           <CheckoutStripeWrapper>
             <h2>Stripe Checkout</h2>
-            <PaymentElement
-              //   id="payment-element"
-              //   style={{marginBbottom: '24px'}}
-
-              options={paymentElementOptions}
-            />
+            <PaymentElement options={paymentElementOptions} />
             <button disabled={isLoading || !stripe || !elements} id="submit">
               <span id="button-text">
                 {isLoading ? (
@@ -165,7 +150,6 @@ const CheckoutForm = () => {
                 )}
               </span>
             </button>
-            {/* Show any error or success messages */}
             {message && <div id="payment-message">{message}</div>}
           </CheckoutStripeWrapper>
         </Container>

@@ -1,8 +1,5 @@
-import {doc, getDoc} from 'firebase/firestore';
 import React, {useEffect, useState} from 'react';
 import {Link, useParams} from 'react-router-dom';
-import {toast} from 'react-toastify';
-import {db} from '../../../firebase/config';
 import styled from 'styled-components';
 import {
   ADD_TO_CART,
@@ -12,6 +9,9 @@ import {
 } from '../../../redux/slice/cartSlice';
 import {useDispatch, useSelector} from 'react-redux';
 import useFetchDocument from '../../../customHooks/useFetchDocument';
+import Card from '../../card/Card';
+import useFetchCollection from '../../../customHooks/useFetchCollection';
+import StarsRating from 'react-star-rate';
 
 const Container = styled.div`
   height: 80vh;
@@ -19,6 +19,7 @@ const Container = styled.div`
 
 const HeaderContainer = styled.div`
   height: 20%;
+  padding-left: 5.5rem;
 `;
 const ProductContainer = styled.div`
   height: 80%;
@@ -27,17 +28,44 @@ const ProductContainer = styled.div`
 `;
 
 const ImageContainer = styled.div`
-  width: 30%;
+  width: 40%;
+
+  display: flex;
+  justify-content: center;
 `;
 
 const ProductContent = styled.div`
-  width: 70%;
+  width: 40%;
 `;
 const Button = styled.button`
-  background: orangered;
+  background: #ffae00;
   color: white;
   padding: 0.5rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border: none;
+`;
+
+const ImageWrapper = styled.div`
+  width: 75%;
+`;
+
+const BackButton = styled.button`
+  background: lightgrey;
+
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  border: none;
+`;
+
+const BackLink = styled(Link)`
+  text-decoration: none;
+  color: white;
+`;
+
+const ReviewsContainer = styled.div`
+  margin-top: 2rem;
 `;
 const ProductDetails = () => {
   const {id} = useParams();
@@ -45,6 +73,8 @@ const ProductDetails = () => {
   const cartItems = useSelector(selectCartItems);
   const dispatch = useDispatch();
   const {document} = useFetchDocument('products', id);
+  const {data} = useFetchCollection('reviews');
+  const filteredReviews = data.filter(review => review.productId === id);
 
   const cart = cartItems.find(item => item.id === id);
 
@@ -69,7 +99,9 @@ const ProductDetails = () => {
     <Container>
       <HeaderContainer>
         <h1>Product Details</h1>
-        <Link to="/#products">&larr; Back To Products</Link>
+        <BackButton>
+          <BackLink to="/#products">&larr; Back To Products</BackLink>
+        </BackButton>
       </HeaderContainer>
       {product === null ? (
         //SPINNER
@@ -77,24 +109,25 @@ const ProductDetails = () => {
       ) : (
         <ProductContainer>
           <ImageContainer>
-            <img
-              style={{width: '100%'}}
-              src={product.imageURL}
-              alt={product.name}
-            />
+            <ImageWrapper>
+              <Card>
+                <img
+                  style={{width: '100%'}}
+                  src={product.imageURL}
+                  alt={product.name}
+                />
+              </Card>
+            </ImageWrapper>
           </ImageContainer>
+
           <ProductContent>
-            <h3>{product.name}</h3>
-            <p>
+            <h3 style={{fontSize: '1.5rem', marginTop: '0'}}>{product.name}</h3>
+            <p style={{fontSize: '1rem'}}>
               <b>Price:</b>
               {`$${product.price}`}
             </p>
-            <p>{product.desc}</p>
-            <p>
-              <b>SKU:</b>
-              {product.id}
-            </p>
-            <p>
+            <p style={{fontSize: '1.2rem'}}>{product.desc}</p>
+            <p style={{fontSize: '1.2rem'}}>
               <b>Brand:</b>
               {product.brand}
             </p>
@@ -110,6 +143,30 @@ const ProductDetails = () => {
               )}
             </div>
             <Button onClick={() => addToCart(product)}>Add To Cart</Button>
+            <ReviewsContainer>
+              <Card>
+                <h3>Product Reviews</h3>
+                <div>
+                  {filteredReviews.length === 0 ? (
+                    <p>There are no reviews for this product yet.</p>
+                  ) : (
+                    <>
+                      {filteredReviews.map((item, index) => {
+                        const {rate, review, reviewDate, username} = item;
+                        return (
+                          <div>
+                            <StarsRating value={rate} />
+                            <p>{review}</p>
+                            <p>{reviewDate}</p>
+                            <p>{username}</p>
+                          </div>
+                        );
+                      })}
+                    </>
+                  )}
+                </div>
+              </Card>
+            </ReviewsContainer>
           </ProductContent>
         </ProductContainer>
       )}

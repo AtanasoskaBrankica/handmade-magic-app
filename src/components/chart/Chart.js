@@ -11,6 +11,11 @@ import {
 import {Bar} from 'react-chartjs-2';
 import {selectOrders} from '../../redux/slice/orderSlice';
 import {useSelector} from 'react-redux';
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  padding-top: 1rem;
+`;
 
 ChartJS.register(
   CategoryScale,
@@ -69,10 +74,10 @@ const Chart = () => {
     ],
   };
   return (
-    <div>
-      <h3>Order Status Chart</h3>
-      <Bar options={options} data={data} />;
-    </div>
+    <Wrapper>
+      <h2>Order Status Chart</h2>
+      <Bar options={options} data={data} />
+    </Wrapper>
   );
 };
 

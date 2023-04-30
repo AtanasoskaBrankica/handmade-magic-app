@@ -4,18 +4,19 @@ import styled from 'styled-components';
 
 const SearchContainer = styled.div`
   border: 1px solid black;
-  width: 60%;
+  padding: 5px;
   height: 60%;
   display: flex;
   flex-direction: row;
+  border-radius: 15px;
 `;
 const SearchInput = styled.input`
   border: none;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  outline: none;
 `;
 
 const SearchIcon = styled.div`
-  margin-top: 0.5rem;
   margin-right: 0.5rem;
   margin-left: 1rem;
 `;

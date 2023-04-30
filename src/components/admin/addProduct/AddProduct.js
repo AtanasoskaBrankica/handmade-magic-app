@@ -41,15 +41,19 @@ const Title = styled.h1`
   text-align: center;
 `;
 const Label = styled.label`
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   font-weight: bold;
+  font-size: 1.2rem;
 `;
 const Input = styled.input`
   height: 30%;
   width: 30vw;
+  border-radius: 8px;
+  padding: 0.2rem;
+  font-size: 1rem;
 `;
 const FormItem = styled.div`
-  height: 13vh;
+  height: 12vh;
   display: flex;
   flex-direction: column;
   width: 50%;
@@ -58,28 +62,35 @@ const FormItem = styled.div`
   width: 30vw;
 `;
 const Form = styled.form`
-  height: 85vh;
+  padding-top: 1rem;
 `;
 
 const Select = styled.select`
   width: 30vw;
   height: 35%;
+  border-radius: 8px;
+  font-size: 1rem;
 `;
 const Option = styled.option``;
 
 const TextArea = styled.textarea`
   width: 30vw;
   height: 80vh;
+  border-radius: 8px;
+  font-size: 1rem;
 `;
 
 const SaveBtn = styled.button`
   margin-left: 1rem;
   margin-top: 1rem;
-  height: 5%;
-  background-color: #007bff;
+
+  background-color: cornflowerblue;
   color: white;
   border: none;
-  border-radius: 7%;
+  border-radius: 10px;
+  font-size: 1rem;
+
+  padding: 1rem;
 `;
 
 const Progress = styled.div`
@@ -298,14 +309,6 @@ const AddProduct = () => {
             </FormItem>{' '}
             <FormItem>
               <Label>Product Company/Brand:</Label>
-              {/* <Input
-              type="text"
-              placeholder="Product brand"
-              required
-              name="brand"
-              value={product.brand}
-              onChange={handleInputChange}
-            /> */}
               <Select
                 required
                 name="brand"

@@ -14,7 +14,6 @@ import Loader from '../loader/Loader';
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  margin-bottom: 2rem;
 `;
 
 const Aside = styled.aside`

@@ -6,7 +6,9 @@ const FooterWrapper = styled.div`
   text-align: center;
   padding-top: 3rem;
   font-weight: bold;
-  background-color: antiquewhite;
+  background-color: #c1b199;
+  color: white;
+  font-size: 1.2rem;
 `;
 const date = new Date();
 const currentYear = date.getFullYear();

@@ -1,103 +1,84 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import {BsFillGridFill} from 'react-icons/bs';
-import {FaListAlt} from 'react-icons/fa';
 import Search from '../../search/Search';
 import ProductItem from '../productItem/ProductItem';
 import {useDispatch, useSelector} from 'react-redux';
 import {
   FILTER_BY_SEARCH,
-  SORT_PRODUCTS,
   selectFilteredProducts,
 } from '../../../redux/slice/filterSlice';
-const Container = styled.div`
-  height: 100%;
-`;
+import Pagination from '../../pagination/Pagination';
+const Container = styled.div``;
 const TopContainer = styled.div`
   height: 10%;
 
+  width: 40%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding-top: 1.6rem;
 `;
 
 const GridWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  font-size: 1.2rem;
 
-  flex: 1;
+  padding-top: 2px;
+  width: 30%;
+
+  margin-right: 6rem;
 `;
 
-const Icon = styled.div`
-  margin-right: 1rem;
-`;
 const SearchWrapper = styled.div`
-  flex: 1;
-`;
-
-const SortWrapper = styled.div`
-  flex: 1;
+  width: 50%;
 `;
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 300px 300px;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 400px 450px;
   grid-gap: 20px;
+  margin-top: 1rem;
+  height: 100%;
 `;
 
 const ProductList = ({products}) => {
-  const [grid, setGrid] = useState(true);
   const [searchValue, setSearchValue] = useState('');
-  const [sort, setSort] = useState('latest');
   const filteredProducts = useSelector(selectFilteredProducts);
   console.log('filteredProducts', filteredProducts);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage, setProductsPerPage] = useState(9);
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = filteredProducts.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(FILTER_BY_SEARCH({products, searchValue}));
   }, [searchValue, products]);
 
-  useEffect(() => {
-    dispatch(SORT_PRODUCTS({products, sort}));
-  }, [sort, products]);
   console.log('products==>', products);
   return (
     <Container id="product">
       <TopContainer>
-        <GridWrapper>
-          <Icon>
-            <BsFillGridFill
-              size={25}
-              color="orangered"
-              onClick={() => setGrid(true)}
-            />
-          </Icon>
-          <Icon>
-            <FaListAlt size={25} color="blue" onClick={() => setGrid(false)} />
-          </Icon>
-          <p>
-            <b>{filteredProducts.length}</b>Products found
-          </p>
-        </GridWrapper>
         <SearchWrapper>
           <Search
             value={searchValue}
             onChange={e => setSearchValue(e.target.value)}
           />
         </SearchWrapper>
-        <SortWrapper>
-          <label>Sort by:</label>
-          <select value={sort} onChange={e => setSort(e.target.value)}>
-            <option value="latest">Latest</option>
-            <option value="lowest-price">Lowest Price</option>
-            <option value="highest-price">Highest Price</option>
-            <option value="a-z">A - Z</option>
-            <option value="z-a">Z - A</option>
-          </select>
-        </SortWrapper>
+        <GridWrapper>
+          <p style={{margin: '0'}}>
+            <b>{filteredProducts.length}</b>
+            <span style={{marginLeft: '5px'}}>Products found</span>
+          </p>
+        </GridWrapper>
       </TopContainer>
       <Grid>
-        {filteredProducts.map(product => {
+        {currentProducts.map(product => {
           return (
             <div key={product.id}>
               <ProductItem {...product} product={product} />
@@ -105,6 +86,12 @@ const ProductList = ({products}) => {
           );
         })}
       </Grid>
+      <Pagination
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        productsPerPage={productsPerPage}
+        totalProducts={filteredProducts.length}
+      ></Pagination>
     </Container>
   );
 };

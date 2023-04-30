@@ -7,27 +7,49 @@ import {
 } from '../../redux/slice/cartSlice';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
-import Card from '../card/Card';
 
-const CheckoutSummaryContainer = styled.div``;
+const CheckoutSummaryContainer = styled.div`
+  padding-left: 1rem;
+  padding-right: 1rem;
+`;
 
 const SubTotalWrapper = styled.div`
   display: flex;
 
   flex-direction: row;
+  justify-content: space-between;
 `;
 
 const ProductContainer = styled.div`
-  border: 1px solid black;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
   margin-bottom: 0.5rem;
+  padding: 1rem;
 `;
+
+const CartQuantity = styled.p`
+  font-weight: bold;
+  margin: 0;
+  margin-top: 1rem;
+`;
+const CartAmount = styled.p`
+  margin: 0;
+  margin-top: 0.5rem;
+  margin-left: 5rem;
+  font-size: 2rem;
+  color: red;
+  margin-right: 1rem;
+`;
+
+const SubTotalTitle = styled.h4`
+  margin: 0;
+  margin-top: 1rem;
+`;
+
 const CheckoutSummary = () => {
   const cartItems = useSelector(selectCartItems);
   const cartTotalAmount = useSelector(selectCartTotalAmount);
   const cartTotalQuantity = useSelector(selectCartTotalQuantity);
-  console.log('cartitems', cartItems);
-  console.log(cartTotalQuantity);
-  console.log(cartTotalAmount);
   return (
     <CheckoutSummaryContainer>
       <h2>Checkout Summary</h2>
@@ -41,18 +63,16 @@ const CheckoutSummary = () => {
           </>
         ) : (
           <>
-            <p>
-              <b>{`Cart item(s): ${cartTotalQuantity}`}</b>
-            </p>
+            <CartQuantity>{`Cart item(s): ${cartTotalQuantity}`}</CartQuantity>
             <SubTotalWrapper>
-              <h4>Subtotal:</h4>
-              <p>{`$${cartTotalAmount.toFixed(2)}`}</p>
+              <SubTotalTitle>Subtotal:</SubTotalTitle>
+              <CartAmount>{`$${cartTotalAmount.toFixed(2)}`}</CartAmount>
             </SubTotalWrapper>
             {cartItems.map((item, index) => {
               const {id, name, price, cartQuantity} = item;
               return (
                 <ProductContainer key={id}>
-                  <h4>Product: {name}</h4>
+                  <h3 style={{margin: '0'}}>Product: {name}</h3>
                   <p>Quantity: {cartQuantity}</p>
                   <p>Unit Price: {price}</p>
                   <p>Price: {price * cartQuantity}</p>
