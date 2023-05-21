@@ -56,7 +56,7 @@ const OrderDetails = () => {
           </OrderInfo>
           <OrderInfo>
             <b style={{marginRight: '0.5rem'}}>Order Amount:</b>
-            {order.orderAmount}
+            {`${order.orderAmount} MKD`}
           </OrderInfo>
           <OrderInfo>
             <b style={{marginRight: '0.5rem'}}>Order Status:</b>

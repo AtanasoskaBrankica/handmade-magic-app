@@ -98,7 +98,7 @@ const Register = () => {
           <img
             src={registerImage}
             alt="Register Image"
-            style={{width: '65%'}}
+            style={{width: '75%'}}
           />
         </ImageWrapper>
         <RegisterWrapper>
@@ -127,7 +127,7 @@ const Register = () => {
                   value={confirmPassword}
                   onChange={event => setConfirmPassword(event.target.value)}
                 />
-                <AuthButton type="submit" background="salmon">
+                <AuthButton type="submit" background="#ffae00">
                   Register
                 </AuthButton>
                 <LoginWrapper>

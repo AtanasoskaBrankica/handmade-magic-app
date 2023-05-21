@@ -18,6 +18,7 @@ import {db} from '../../firebase/config';
 const Container = styled.div`
   display: flex;
   flexdirection: row;
+  height: 70vh;
 `;
 
 const Title = styled.h1`
@@ -117,7 +118,7 @@ const CheckoutForm = () => {
           if (result.paymentIntent.status === 'succeeded') {
             setIsLoading(false);
             toast.success('Payment successful');
-            navigate('/checkout-success');
+            navigate('/order-history');
             saveOrder();
           }
         }
@@ -135,13 +136,26 @@ const CheckoutForm = () => {
       <Title>Checkout</Title>
       <form onSubmit={handleSubmit}>
         <Container>
-          <CheckoutSummaryWrapper>
+          {/* <CheckoutSummaryWrapper>
             <CheckoutSummary />
-          </CheckoutSummaryWrapper>
+          </CheckoutSummaryWrapper> */}
           <CheckoutStripeWrapper>
             <h2>Stripe Checkout</h2>
             <PaymentElement options={paymentElementOptions} />
-            <button disabled={isLoading || !stripe || !elements} id="submit">
+            <button
+              disabled={isLoading || !stripe || !elements}
+              id="submit"
+              style={{
+                background: 'cornflowerblue',
+                padding: '0.8rem',
+                border: 'none',
+                borderRadius: '0.5rem',
+                width: '7rem',
+                color: 'white',
+                fontSize: '1rem',
+                marginTop: '1rem',
+              }}
+            >
               <span id="button-text">
                 {isLoading ? (
                   <div className="spinner" id="spinner"></div>

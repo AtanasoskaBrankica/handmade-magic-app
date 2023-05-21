@@ -11,6 +11,7 @@ import {selectOrders, STORE_ORDERS} from '../../redux/slice/orderSlice';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  height: 70vh;
 `;
 
 const SubTitle = styled.p`

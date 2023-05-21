@@ -69,13 +69,17 @@ const ProductItem = ({product, id, name, price, desc, imageURL}) => {
       <Item>
         <ImageContainer>
           <Link to={`/product-details/${id}`}>
-            <img style={{width: '250px'}} src={imageURL} alt={name} />
+            <img
+              style={{width: '270px', height: '230px'}}
+              src={imageURL}
+              alt={name}
+            />
           </Link>
         </ImageContainer>
 
         <ProductInfoContainer>
           <ProductName>{shorthenText(name, 18)}</ProductName>
-          <ProductPrice>{`$${price}`}</ProductPrice>
+          <ProductPrice>{`${price} MKD`}</ProductPrice>
         </ProductInfoContainer>
         <Button onClick={() => addToCart(product)}>Add To Cart</Button>
       </Item>
