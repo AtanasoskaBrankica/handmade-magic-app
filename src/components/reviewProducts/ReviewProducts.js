@@ -50,7 +50,7 @@ const ReviewButton = styled.button`
   padding-bottom: 0.5rem;
   font-size: 1.2rem;
   border-radius: 10px;
-
+  cursor: pointer;
   border: none;
 `;
 

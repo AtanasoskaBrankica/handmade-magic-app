@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import forgotPasswordImage from '../../assets/forgot.jpg';
+import forgotPasswordImage from '../../assets/reset.jpg';
 import Card from '../../components/card/Card';
 import {sendPasswordResetEmail} from 'firebase/auth';
 import {auth} from '../../firebase/config';
@@ -55,7 +55,11 @@ const Reset = () => {
       {isLoading && <Loader />}
       <AuthWrapper>
         <ImageWrapper>
-          <img src={forgotPasswordImage} alt="Forgot Password Image" />
+          <img
+            src={forgotPasswordImage}
+            style={{width: '80%'}}
+            alt="Forgot Password Image"
+          />
         </ImageWrapper>
         <ResetWrapper>
           <ResetFormWrapper>
@@ -69,7 +73,7 @@ const Reset = () => {
                   value={email}
                   onChange={event => setEmail(event.target.value)}
                 />
-                <AuthButton background="dodgerblue" type="submit">
+                <AuthButton background="cornflowerblue" type="submit">
                   Reset Password
                 </AuthButton>
               </ResetForm>

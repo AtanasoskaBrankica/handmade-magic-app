@@ -22,9 +22,7 @@ import {BackLink} from '../../shared/Button';
 import {ProductLabel} from '../../shared/Text';
 import {CartQuantity} from '../../shared/Container';
 
-const Container = styled.div`
-  height: 80vh;
-`;
+const Container = styled.div``;
 
 const HeaderContainer = styled.div`
   height: 20%;
@@ -38,21 +36,25 @@ const ProductContainer = styled.div`
 
 const ImageContainer = styled.div`
   width: 40%;
-
   display: flex;
   justify-content: center;
+  margin-top: 1rem;
 `;
 
 const ProductContent = styled.div`
   width: 40%;
+  margin-top: 0.5rem;
 `;
 
 const ImageWrapper = styled.div`
-  width: 75%;
+  width: 85%;
+
+  margin-left: 5rem;
 `;
 
 const ReviewsContainer = styled.div`
   margin-top: 2rem;
+  margin-bottom: 2rem;
 `;
 
 const QuantityWrapper = styled.div`
@@ -75,6 +77,10 @@ const ReviewMessage = styled.p`
 const Wrapper = styled.div`
   margin-top: -1.5rem;
   margin-bottom: 1rem;
+`;
+
+const ButtonWrapper = styled.div`
+  margin-top: 2rem;
 `;
 const ProductDetails = () => {
   const {id} = useParams();
@@ -131,11 +137,11 @@ const ProductDetails = () => {
 
           <ProductContent>
             <ProductLabel fontSize="1.5rem" marginTop="0">
-              {product.name}
+              <b>{product.name}</b>
             </ProductLabel>
             <ProductLabel fontSize="1.2rem">
               <b>Price:</b>
-              {`$${product.price}`}
+              {` ${product.price} MKD`}
             </ProductLabel>
             <ProductLabel fontSize="1.2rem">
               <b>Description: </b>
@@ -162,9 +168,11 @@ const ProductDetails = () => {
                 </>
               )}
             </Wrapper>
-            <Button background="#ffae00" onClick={() => addToCart(product)}>
-              Add To Cart
-            </Button>
+            <ButtonWrapper>
+              <Button background="#ffae00" onClick={() => addToCart(product)}>
+                Add To Cart
+              </Button>
+            </ButtonWrapper>
             <ReviewsContainer>
               <Card>
                 <ReviewTitle>Product Reviews</ReviewTitle>

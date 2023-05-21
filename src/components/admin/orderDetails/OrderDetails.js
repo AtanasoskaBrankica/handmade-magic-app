@@ -46,7 +46,7 @@ const OrderDetails = () => {
           </OrderInfo>
           <OrderInfo>
             <b style={{marginRight: '0.5rem'}}>Order Amount:</b>
-            {order.orderAmount}
+            {`${order.orderAmount} MKD`}
           </OrderInfo>
           <OrderInfo>
             <b style={{marginRight: '0.5rem'}}>Order Status:</b>
@@ -56,9 +56,7 @@ const OrderDetails = () => {
             <b style={{marginRight: '0.5rem'}}>Shipping Address:</b>
             <br />
             Address: {order.shippingAddress?.line1},
-            {order.shippingAddress?.line2},{order.shippingAddress?.city}
-            <br />
-            State: {order.shippingAddress?.state}
+            {order.shippingAddress?.city}
             <br />
             Country: {order.shippingAddress?.country}
           </OrderInfo>

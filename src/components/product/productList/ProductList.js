@@ -38,7 +38,7 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 400px 450px;
-  grid-gap: 20px;
+  grid-gap: 15px;
   margin-top: 1rem;
   height: 100%;
 `;
@@ -47,7 +47,7 @@ const ProductList = ({products}) => {
   const [searchValue, setSearchValue] = useState('');
   const filteredProducts = useSelector(selectFilteredProducts);
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage, setProductsPerPage] = useState(9);
+  const [productsPerPage, setProductsPerPage] = useState(15);
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = filteredProducts.slice(
@@ -75,15 +75,17 @@ const ProductList = ({products}) => {
           </p>
         </GridWrapper>
       </TopContainer>
-      <Grid>
-        {currentProducts.map(product => {
-          return (
-            <div key={product.id}>
-              <ProductItem {...product} product={product} />
-            </div>
-          );
-        })}
-      </Grid>
+      <div>
+        <Grid>
+          {currentProducts.map(product => {
+            return (
+              <div key={product.id}>
+                <ProductItem {...product} product={product} />
+              </div>
+            );
+          })}
+        </Grid>
+      </div>
       <Pagination
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}

@@ -16,6 +16,12 @@ import {
 import {selectUserEmail} from '../../redux/slice/authSlice';
 import {toast} from 'react-toastify';
 import CheckoutForm from '../../components/checkoutForm/CheckoutForm';
+import Loader from '../../components/loader/Loader';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  height: 70vh;
+`;
 
 const stripePromise = loadStripe(
   'pk_test_51MnPNlFS83r3DyGH1uynH70p8mcV9hcWnxiZji7hA3XVfuYdwzbvM4KPDy9E3tPJCQJerX39AtJUFD8zyMOC42Yh001uYEZDFa'
@@ -28,7 +34,7 @@ const Checkout = () => {
   const cartTotalQuantity = useSelector(selectCartTotalQuantity);
   const customerEmail = useSelector(selectUserEmail);
   const shippingAddress = useSelector(selectShippingAddress);
-  const billingAddress = useSelector(selectBillingAddress);
+  // const billingAddress = useSelector(selectBillingAddress);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -46,7 +52,7 @@ const Checkout = () => {
         items: cartItems,
         userEmail: customerEmail,
         shipping: shippingAddress,
-        billing: billingAddress,
+        // billing: billingAddress,
         description,
       }),
     })
@@ -76,9 +82,15 @@ const Checkout = () => {
 
   return (
     <>
-      <section>
-        <div>{!clientSecret && <h3>{message}</h3>}</div>
-      </section>
+      {/* <section> */}
+      <div>
+        {!clientSecret && (
+          <Container>
+            <Loader />
+          </Container>
+        )}
+      </div>
+      {/* </section> */}
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
           <CheckoutForm />

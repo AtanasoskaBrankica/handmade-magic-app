@@ -97,7 +97,7 @@ const ProductFilter = () => {
                 type="button"
                 onClick={() => filterProducts(category)}
               >
-                <RiArrowDropRightFill />
+                <RiArrowDropRightFill size={20} />
                 {category}
               </CategoriesButton>
             );

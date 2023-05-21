@@ -11,13 +11,14 @@ import {useNavigate} from 'react-router-dom';
 import CheckoutSummary from '../../components/checkoutSummary/CheckoutSummary';
 import {Btn} from '../../components/shared/Button';
 import classes from './CheckoutDetails.module.css';
+import {FormInput, FormItem, FormLabel} from '../../components/shared/Input';
 
 const initialAddress = {
   name: '',
   line1: '',
-  line2: '',
+  // line2: '',
   city: '',
-  state: '',
+  // state: '',
   postal_code: '',
   country: '',
   phone: '',
@@ -49,27 +50,6 @@ const ShippingForm = styled.form`
   display: flex;
   flex-direction: column;
 `;
-const Label = styled.label`
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-`;
-const Input = styled.input`
-  height: 40%;
-  width: 30vw;
-  border-radius: 10px;
-  padding: 0.5rem;
-  font-size: 1.2rem;
-`;
-const FormItem = styled.div`
-  height: 10vh;
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  margin-left: 1rem;
-  margin-top: 1rem;
-  width: 30vw;
-  margin-right: 2rem;
-`;
 
 const FormItemDropdown = styled.div`
   display: flex;
@@ -97,7 +77,7 @@ const LeftCardContainer = styled.div`
 
 const CheckoutDetails = () => {
   const [shippingAddress, setShippingAddress] = useState({...initialAddress});
-  const [billingAddress, setBillingAddress] = useState({...initialAddress});
+  // const [billingAddress, setBillingAddress] = useState({...initialAddress});
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleShippingAddress = event => {
@@ -108,18 +88,18 @@ const CheckoutDetails = () => {
     });
   };
 
-  const handleBillingAddress = event => {
-    const {name, value} = event.target;
-    setBillingAddress({
-      ...billingAddress,
-      [name]: value,
-    });
-  };
+  // const handleBillingAddress = event => {
+  //   const {name, value} = event.target;
+  //   setBillingAddress({
+  //     ...billingAddress,
+  //     [name]: value,
+  //   });
+  // };
 
   const handleSubmit = event => {
     event.preventDefault();
     dispatch(SAVE_SHIPPING_ADDRESS(shippingAddress));
-    dispatch(SAVE_BILLING_ADDRESS(billingAddress));
+    // dispatch(SAVE_BILLING_ADDRESS(billingAddress));
     navigate('/checkout');
   };
   return (
@@ -133,8 +113,8 @@ const CheckoutDetails = () => {
               <Wrapper>
                 <Title>Shipping Address</Title>
                 <FormItem>
-                  <Label>Recipient Name:</Label>
-                  <Input
+                  <FormLabel>Recipient Name and Surname:</FormLabel>
+                  <FormInput
                     type="text"
                     name="name"
                     placeholder="Recipient Name"
@@ -143,8 +123,8 @@ const CheckoutDetails = () => {
                   />
                 </FormItem>
                 <FormItem>
-                  <Label>Address Line 1:</Label>
-                  <Input
+                  <FormLabel>Address:</FormLabel>
+                  <FormInput
                     type="text"
                     name="line1"
                     placeholder="Address Line 1"
@@ -152,7 +132,7 @@ const CheckoutDetails = () => {
                     onChange={event => handleShippingAddress(event)}
                   />
                 </FormItem>
-                <FormItem>
+                {/* <FormItem>
                   <Label>Address Line 2:</Label>
                   <Input
                     type="text"
@@ -161,10 +141,10 @@ const CheckoutDetails = () => {
                     value={shippingAddress.line2}
                     onChange={event => handleShippingAddress(event)}
                   />
-                </FormItem>
+                </FormItem> */}
                 <FormItem>
-                  <Label>City:</Label>
-                  <Input
+                  <FormLabel>City:</FormLabel>
+                  <FormInput
                     type="text"
                     name="city"
                     placeholder="City"
@@ -172,7 +152,7 @@ const CheckoutDetails = () => {
                     onChange={event => handleShippingAddress(event)}
                   />
                 </FormItem>
-                <FormItem>
+                {/* <FormItem>
                   <Label>State:</Label>
                   <Input
                     type="text"
@@ -181,10 +161,10 @@ const CheckoutDetails = () => {
                     value={shippingAddress.state}
                     onChange={event => handleShippingAddress(event)}
                   />
-                </FormItem>
+                </FormItem> */}
                 <FormItem>
-                  <Label>Postal Code:</Label>
-                  <Input
+                  <FormLabel>Postal Code:</FormLabel>
+                  <FormInput
                     type="text"
                     name="postal_code"
                     placeholder="Postal Code"
@@ -216,8 +196,8 @@ const CheckoutDetails = () => {
                   />
                 </FormItem>
                 <FormItem>
-                  <Label>Phone:</Label>
-                  <Input
+                  <FormLabel>Phone:</FormLabel>
+                  <FormInput
                     type="text"
                     name="phone"
                     placeholder="Phone"
@@ -226,7 +206,7 @@ const CheckoutDetails = () => {
                   />
                 </FormItem>
               </Wrapper>
-              <Wrapper>
+              {/* <Wrapper>
                 <Title>Billing Address</Title>
                 <FormItem>
                   <Label>Name:</Label>
@@ -320,7 +300,7 @@ const CheckoutDetails = () => {
                     onChange={event => handleBillingAddress(event)}
                   />
                 </FormItem>
-              </Wrapper>
+              </Wrapper> */}
               <BtnWrapper>
                 <Btn type="submit">Proceed To Checkout</Btn>
               </BtnWrapper>

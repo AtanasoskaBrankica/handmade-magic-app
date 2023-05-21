@@ -23,7 +23,7 @@ const LoginWrapper = styled.div`
 
 const ImageWrapper = styled.div`
   width: 50%;
-  padding-top: 6rem;
+
   text-align: right;
 `;
 
@@ -136,7 +136,7 @@ const Login = () => {
       {isLoading && <Loader />}
       <AuthWrapper>
         <ImageWrapper>
-          <img src={loginImage} alt="Login Image" style={{width: '80%'}} />
+          <img src={loginImage} alt="Login Image" style={{width: '90%'}} />
         </ImageWrapper>
         <LoginWrapper>
           <LoginFormWrapper>
@@ -165,7 +165,7 @@ const Login = () => {
                   <ResetLink to="/reset">Forggot Password?</ResetLink>
                 </ResetLinkWrapper>
                 <Text>-- or --</Text>
-                <AuthButton background="pink" onClick={loginWithGoogle}>
+                <AuthButton background="#ffae00" onClick={loginWithGoogle}>
                   <AiOutlineGoogle
                     color="white"
                     size="20"

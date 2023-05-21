@@ -132,7 +132,7 @@ export const OrdersTable = ({orders, handleClick}) => {
                 {orderDate} at {orderTime}
               </td>
               <td>{id}</td>
-              <td>{`$${orderAmount}`}</td>
+              <td>{`${orderAmount} MKD`}</td>
               <td>{orderStatus}</td>
             </tr>
           );
@@ -167,9 +167,9 @@ export const OrderDetailsTable = ({order, review}) => {
                 </p>
                 <img src={imageURL} alt={name} style={{width: '200px'}} />
               </td>
-              <td>{`${price}`}</td>
+              <td>{`${price} MKD`}</td>
               <td>{cartQuantity}</td>
-              <td>{`${(price * cartQuantity).toFixed(2)}`}</td>
+              <td>{`${(price * cartQuantity).toFixed(2)} MKD`}</td>
               {review && (
                 <td>
                   <Link to={`/review-product/${id}`}>
