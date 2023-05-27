@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import loginImage from '../../assets/login.jpg';
 import {Link} from 'react-router-dom';
 import {AiOutlineGoogle} from 'react-icons/ai';
@@ -10,11 +10,12 @@ import Loader from '../../components/loader/Loader';
 import {toast} from 'react-toastify';
 import {GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
 import styled from 'styled-components';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {selectPreviousURL} from '../../redux/slice/cartSlice';
 import {AuthButton} from '../../components/shared/Button';
 import {Input} from '../../components/shared/Input';
 import {AuthWrapper} from '../../components/shared/Container';
+import {REMOVE_ACTIVE_USER} from '../../redux/slice/authSlice';
 
 const LoginWrapper = styled.div`
   width: 50%;
@@ -93,6 +94,7 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const previousURL = useSelector(selectPreviousURL);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   console.log('email', email);
 
   const redirectUser = () => {

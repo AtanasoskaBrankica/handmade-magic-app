@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {Link, NavLink} from 'react-router-dom';
+import {Link, NavLink, useLocation, useParams} from 'react-router-dom';
 import {GiShoppingCart} from 'react-icons/gi';
 import {signOut} from 'firebase/auth';
 import {auth} from '../../firebase/config';
@@ -167,6 +167,12 @@ const Header = () => {
   const [scrollPage, setScrollPage] = useState(false);
   const dispatch = useDispatch();
   const cartTotalQuantity = useSelector(selectCartTotalQuantity);
+  const location = useLocation();
+  const pathname = location.pathname;
+  console.log('test', pathname.includes('/login'));
+  console.log('location', location);
+  console.log('url', window.location.href);
+  const url = window.location.href;
 
   useEffect(() => {
     dispatch(CALCULATE_TOTAL_QUANTITY);
@@ -184,16 +190,29 @@ const Header = () => {
 
   useEffect(() => {
     onAuthStateChanged(auth, user => {
-      if (user) {
+      if (user && !url.includes('/login')) {
         if (user.displayName === null) {
-          const userName = user.email.substring(0, user.email.indexOf('@'));
+          console.log('user', user);
+          // if (user.email.includes('.')) {
+          //   const finalUserName =
+          //     user.email.split('.')[0].charAt(0).toUpperCase() +
+          //     userName.slice(1);
+          // } else {
+          //   const userName = user.email.substring(0, user.email.indexOf('@'));
+          //   const finalUserName =
+          //     userName.charAt(0).toUpperCase() + userName.slice(1);
+          // }
+          // const atIndex = user.email.indexOf('@');
+          // const finalUserName = user.email.substring(0, atIndex).split('.')[0];
+          const atIndex = user.email.indexOf('@');
+          const username = user.email.substring(0, atIndex).split('.')[0];
           const finalUserName =
-            userName.charAt(0).toUpperCase() + userName.slice(1);
+            username.charAt(0).toUpperCase() + username.slice(1);
+
           setUsername(finalUserName);
         } else {
           setUsername(user.displayName);
         }
-
         dispatch(
           SET_ACTIVE_USER({
             email: user.email,

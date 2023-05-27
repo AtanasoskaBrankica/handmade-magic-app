@@ -29,12 +29,14 @@ const Icon = styled.div`
   padding-right: 1rem;
 `;
 
-const InformationBox = ({title, count, icon}) => {
+const InformationBox = ({title, count, icon, valute = ''}) => {
   return (
     <Wrapper>
       <Title>{title}</Title>
       <Content>
-        <Count>{`$${count}`}</Count>
+        <Count>
+          {`${count}`} {valute}
+        </Count>
         <Icon>{icon}</Icon>
       </Content>
     </Wrapper>
