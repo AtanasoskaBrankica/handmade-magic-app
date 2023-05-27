@@ -120,7 +120,7 @@ const Contact = () => {
               </FormItem>
               <FormItem>
                 <FormLabel>Your Message</FormLabel>
-                <TextArea />
+                <TextArea name="message" />
               </FormItem>
               <BtnWrapper>
                 <Btn>Send Message</Btn>

@@ -74,8 +74,14 @@ const SubTotalTitle = styled.h4`
 `;
 
 const Text = styled.p`
-  font-size: 1.2rem;
+  font-size: 2.5rem;
   margin-left: 3rem;
+  text-align: center;
+  font-weight: bold;
+`;
+
+const Container = styled.div`
+  height: 51vh;
 `;
 const ShoppingCart = () => {
   const cartItems = useSelector(selectCartItems);
@@ -116,7 +122,9 @@ const ShoppingCart = () => {
 
       {cartItems.length === 0 ? (
         <>
-          <Text>Your cart in currently empty</Text>
+          <Container>
+            <Text>Your cart is currently empty</Text>
+          </Container>
         </>
       ) : (
         <>

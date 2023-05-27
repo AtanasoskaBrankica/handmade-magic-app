@@ -56,6 +56,7 @@ const Home = () => {
           title="Earnings"
           count={`${totalOrdersAmount}`}
           icon={earningIcon}
+          valute="MKD"
         />
         <InformationBox
           title="Products"

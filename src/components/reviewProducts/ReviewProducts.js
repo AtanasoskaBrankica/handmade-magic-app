@@ -125,9 +125,10 @@ const ReviewProducts = () => {
               />
               <ReviewLabel>Review:</ReviewLabel>
               <textarea
-                cols="60"
-                rows="15"
+                cols="56"
+                rows="10"
                 value={review}
+                style={{fontSize: '1.2rem'}}
                 required
                 onChange={e => setReview(e.target.value)}
               ></textarea>

@@ -10,7 +10,6 @@ import {
 import {useNavigate} from 'react-router-dom';
 import CheckoutSummary from '../../components/checkoutSummary/CheckoutSummary';
 import {Btn} from '../../components/shared/Button';
-import classes from './CheckoutDetails.module.css';
 import {FormInput, FormItem, FormLabel} from '../../components/shared/Input';
 
 const initialAddress = {
@@ -127,7 +126,7 @@ const CheckoutDetails = () => {
                   <FormInput
                     type="text"
                     name="line1"
-                    placeholder="Address Line 1"
+                    placeholder="Address"
                     value={shippingAddress.line1}
                     onChange={event => handleShippingAddress(event)}
                   />

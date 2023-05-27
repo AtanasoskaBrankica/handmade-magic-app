@@ -85,7 +85,7 @@ export const ProductsTable = ({filteredProducts}) => {
               </td>
               <td>{name}</td>
               <td>{category}</td>
-              <td>{`$${price}`}</td>
+              <td>{`${price} MKD`}</td>
               <td>
                 <Link to={`/admin/add-product/${id}`}>
                   <FiEdit size={20} color="green" />

@@ -6,7 +6,9 @@ import {
   ADD_TO_CART,
   CALCULATE_TOTAL_QUANTITY,
 } from '../../../redux/slice/cartSlice';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {isIfStatement} from 'typescript';
+import {toast} from 'react-toastify';
 
 const Item = styled.div`
   display: flex;
@@ -51,6 +53,7 @@ const Button = styled.button`
 `;
 
 const ProductItem = ({product, id, name, price, desc, imageURL}) => {
+  const isActiveUser = useSelector(state => state.auth.isLoggedIn);
   const dispatch = useDispatch();
   const shorthenText = (text, n) => {
     if (text.lenght > 15) {
@@ -61,8 +64,13 @@ const ProductItem = ({product, id, name, price, desc, imageURL}) => {
   };
 
   const addToCart = product => {
-    dispatch(ADD_TO_CART(product));
-    dispatch(CALCULATE_TOTAL_QUANTITY());
+    if (isActiveUser) {
+      dispatch(ADD_TO_CART(product));
+      dispatch(CALCULATE_TOTAL_QUANTITY());
+    } else {
+      toast.warning('Please log in to add products to your shopping cart.');
+      return;
+    }
   };
   return (
     <Card>
