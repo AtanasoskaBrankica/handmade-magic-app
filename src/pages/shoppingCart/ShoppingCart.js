@@ -141,7 +141,7 @@ const ShoppingCart = () => {
               <CartQuantity>{`Cart item(s): ${cartTotalQuantity}`}</CartQuantity>
               <SubTotalWrapper>
                 <SubTotalTitle>Subtotal:</SubTotalTitle>
-                <CartAmount>{`$${cartTotalAmount.toFixed(2)}`}</CartAmount>
+                <CartAmount>{`${cartTotalAmount.toFixed(2)} MKD`}</CartAmount>
               </SubTotalWrapper>
               <p style={{marginLeft: '1rem'}}>
                 Taxes and shipping calculated at checkout

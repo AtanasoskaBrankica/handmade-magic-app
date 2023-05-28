@@ -221,7 +221,7 @@ export const ShoppingCartTable = ({cartItems}) => {
                 </p>
                 <img src={imageURL} alt={name} style={{width: '200px'}} />
               </td>
-              <td>{`$${price}`}</td>
+              <td>{`${price} MKD`}</td>
               <td>
                 <QuantityWrapper>
                   <DecreaseCartButton onClick={() => decreaseCart(cartItem)}>
@@ -235,7 +235,7 @@ export const ShoppingCartTable = ({cartItems}) => {
                   </IncreaseCartButton>
                 </QuantityWrapper>
               </td>
-              <td>{(price * cartQuantity).toFixed(2)}</td>
+              <td>{(price * cartQuantity).toFixed(2)} MKD</td>
               <td>
                 <BsTrash
                   onClick={() => removeFromCart(cartItem)}

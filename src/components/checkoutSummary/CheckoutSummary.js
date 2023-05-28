@@ -66,7 +66,7 @@ const CheckoutSummary = () => {
             <CartQuantity>{`Cart item(s): ${cartTotalQuantity}`}</CartQuantity>
             <SubTotalWrapper>
               <SubTotalTitle>Subtotal:</SubTotalTitle>
-              <CartAmount>{`$${cartTotalAmount.toFixed(2)}`}</CartAmount>
+              <CartAmount>{`${cartTotalAmount.toFixed(2)} MKD`}</CartAmount>
             </SubTotalWrapper>
             {cartItems.map((item, index) => {
               const {id, name, price, cartQuantity} = item;
@@ -74,8 +74,8 @@ const CheckoutSummary = () => {
                 <ProductContainer key={id}>
                   <h3 style={{margin: '0'}}>Product: {name}</h3>
                   <p>Quantity: {cartQuantity}</p>
-                  <p>Unit Price: {price}</p>
-                  <p>Price: {price * cartQuantity}</p>
+                  <p>Unit Price: {price} MKD </p>
+                  <p>Price: {price * cartQuantity} MKD</p>
                 </ProductContainer>
               );
             })}
