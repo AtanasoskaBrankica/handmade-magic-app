@@ -190,7 +190,7 @@ const Header = () => {
 
   useEffect(() => {
     onAuthStateChanged(auth, user => {
-      if (user && !url.includes('/login')) {
+      if (user) {
         if (user.displayName === null) {
           console.log('user', user);
           // if (user.email.includes('.')) {

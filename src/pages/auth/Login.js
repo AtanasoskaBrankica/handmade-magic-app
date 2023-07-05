@@ -164,7 +164,7 @@ const Login = () => {
                   Login
                 </AuthButton>
                 <ResetLinkWrapper>
-                  <ResetLink to="/reset">Forggot Password?</ResetLink>
+                  <ResetLink to="/reset">Forgot Password?</ResetLink>
                 </ResetLinkWrapper>
                 <Text>-- or --</Text>
                 <AuthButton background="#ffae00" onClick={loginWithGoogle}>

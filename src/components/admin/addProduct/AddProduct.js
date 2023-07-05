@@ -332,7 +332,7 @@ const AddProduct = () => {
             </FormItem>{' '}
             <BtnWrapper>
               <Button background="cornflowerblue" type="submit">
-                {detectForm(id, 'Save Product', 'Edit Product')}
+                {detectForm(id, 'Save Product', 'Save Changes')}
               </Button>
             </BtnWrapper>
           </Form>

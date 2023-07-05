@@ -45,7 +45,7 @@ const Product = () => {
         <ProductFilter />
       </Aside>
       <ContainerProductList>
-        {isLoading ? <Loader /> : <ProductList products={products} />}
+        <ProductList products={products} />
       </ContainerProductList>
     </Container>
   );

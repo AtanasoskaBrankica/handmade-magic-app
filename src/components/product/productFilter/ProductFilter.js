@@ -35,6 +35,7 @@ const CategoriesButton = styled.button`
   width: 50%;
   text-align: left;
   margin-bottom: 2.5rem;
+  cursor: pointer;
 `;
 
 const Select = styled.select`
@@ -133,7 +134,7 @@ const ProductFilter = () => {
       <FilterWrapper height="20%">
         <FilterTitle>Price</FilterTitle>
         <FilterContent fontSize="1.2rem">
-          <p style={{marginBottom: '0'}}>{`$${price}`}</p>
+          <p style={{marginBottom: '0'}}>{`${price} MKD`}</p>
           <div>
             <input
               type="range"
