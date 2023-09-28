@@ -20,6 +20,7 @@ const OrderInfo = styled.span`
 const BtnContainer = styled.div`
   margin-top: 0.5rem;
 `;
+
 const OrderDetails = () => {
   const {id} = useParams();
   const [order, setOrder] = useState(null);
@@ -28,6 +29,7 @@ const OrderDetails = () => {
   useEffect(() => {
     setOrder(document);
   }, [document]);
+
   return (
     <Container>
       <Title>Order Details</Title>
@@ -37,13 +39,9 @@ const OrderDetails = () => {
         </BackButton>
       </BtnContainer>
       {order === null ? (
-        <>{/* <div>LOADER</div> */}</>
+        <></>
       ) : (
         <>
-          <OrderInfo>
-            <b style={{marginRight: '0.5rem'}}>Order ID:</b>
-            {order.id}
-          </OrderInfo>
           <OrderInfo>
             <b style={{marginRight: '0.5rem'}}>Order Amount:</b>
             {`${order.orderAmount} MKD`}

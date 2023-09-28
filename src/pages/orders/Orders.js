@@ -17,6 +17,7 @@ const Container = styled.div`
 const SubTitle = styled.p`
   padding-left: 3rem;
   font-size: 1.2rem;
+  margin-bottom: 0;
 `;
 
 const Orders = () => {
@@ -41,7 +42,6 @@ const Orders = () => {
       <SubTitle>
         Open an order to leave a <b>Product Review</b>
       </SubTitle>
-      {/* {isLoading && <Loader>} */}
       <div style={{paddingLeft: '3rem', paddingRight: '3rem'}}>
         <h2>All Orders</h2>
         {orders.length === 0 ? (

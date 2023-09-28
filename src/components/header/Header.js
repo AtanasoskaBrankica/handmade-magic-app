@@ -45,7 +45,6 @@ const LogoWrapper = styled.div`
 const MiddleWrapper = styled.div`
   width: 18%;
   height: 8rem;
-
   display: flex;
   justify-content: space-between;
   @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Dancing+Script:wght@600;700&family=Exo+2:wght@300&family=Karla:wght@200&family=Montserrat+Alternates:ital,wght@0,500;1,900&family=PT+Serif&family=Playfair+Display:ital@1&family=Quicksand:wght@400;500&family=Roboto:wght@100&family=Space+Grotesk&family=Ysabeau:ital,wght@0,1;0,900;1,1;1,900;1,1000&display=swap');
@@ -60,7 +59,6 @@ const RightWrapper = styled.div`
   width: 25%;
   font-weight: bold;
   width: 32%;
-
   padding-left: 3rem;
 `;
 
@@ -139,7 +137,6 @@ const Logout = styled.div`
 
 const Cart = styled.div`
   width: 20%;
-
   padding-top: 3rem;
 `;
 
@@ -150,14 +147,12 @@ const CartNumber = styled.span`
 const AdminButton = styled.button`
   border: none;
   font-size: 1.2rem;
-
   cursor: pointer;
   @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Dancing+Script:wght@600;700&family=Exo+2:ital,wght@0,300;0,400;1,300&family=Kanit:wght@300&family=Karla:wght@200&family=Montserrat+Alternates:ital,wght@0,500;1,900&family=PT+Serif&family=Playfair+Display:ital@1&family=Poltawski+Nowy:ital@1&family=Quicksand:wght@400;500&family=Roboto:wght@100&family=Space+Grotesk&family=Ysabeau:ital,wght@0,1;0,900;1,1;1,900;1,1000&display=swap');
   font-family: 'Dancing Script', cursive;
   background: none;
   color: white;
   font-weight: bold;
-
   text-decoration: underline;
 `;
 
@@ -169,9 +164,6 @@ const Header = () => {
   const cartTotalQuantity = useSelector(selectCartTotalQuantity);
   const location = useLocation();
   const pathname = location.pathname;
-  console.log('test', pathname.includes('/login'));
-  console.log('location', location);
-  console.log('url', window.location.href);
   const url = window.location.href;
 
   useEffect(() => {
@@ -192,18 +184,6 @@ const Header = () => {
     onAuthStateChanged(auth, user => {
       if (user) {
         if (user.displayName === null) {
-          console.log('user', user);
-          // if (user.email.includes('.')) {
-          //   const finalUserName =
-          //     user.email.split('.')[0].charAt(0).toUpperCase() +
-          //     userName.slice(1);
-          // } else {
-          //   const userName = user.email.substring(0, user.email.indexOf('@'));
-          //   const finalUserName =
-          //     userName.charAt(0).toUpperCase() + userName.slice(1);
-          // }
-          // const atIndex = user.email.indexOf('@');
-          // const finalUserName = user.email.substring(0, atIndex).split('.')[0];
           const atIndex = user.email.indexOf('@');
           const username = user.email.substring(0, atIndex).split('.')[0];
           const finalUserName =
@@ -281,7 +261,6 @@ const Header = () => {
             </HeaderNavLink>
           </ShowOnLogin>
         </Logout>
-
         <Cart>
           <ShowOnLogin>
             <HeaderLink to="/cart">

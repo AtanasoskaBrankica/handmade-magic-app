@@ -4,6 +4,7 @@ import {useSelector} from 'react-redux';
 import {NavLink} from 'react-router-dom';
 import {FaUser} from 'react-icons/fa';
 import {RiArrowDropRightFill} from 'react-icons/ri';
+
 const NavbarWrapper = styled.div`
   background-color: white;
   color: white;
@@ -11,24 +12,29 @@ const NavbarWrapper = styled.div`
   border-bottom: 0px;
   height: 100%;
 `;
+
 const UserProfile = styled.div`
   height: 15vh;
   border-bottom: 1px solid lightgrey;
   padding-top: 1rem;
   background: #c1b199;
 `;
+
 const UserWrapper = styled.div`
   width: 20%;
   margin-left: 43%;
   margin-top: 2rem;
   font-weight: bold;
 `;
+
 const UserName = styled.div`
   font-size: 1.2rem;
 `;
+
 const NavBar = styled.nav`
   padding-top: 5px;
 `;
+
 const NavBarItem = styled.div`
   border-bottom: 1px solid lightgrey;
   padding-top: 1rem;
@@ -46,6 +52,7 @@ const StyledNavLink = styled(NavLink)`
 
 const Navbar = () => {
   const userName = useSelector(state => state.auth.userName);
+
   return (
     <NavbarWrapper>
       <UserProfile>

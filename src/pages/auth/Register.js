@@ -33,6 +33,7 @@ const RegisterTitle = styled.h2`
   text-align: center;
   padding-top: 1rem;
 `;
+
 const RegisterForm = styled.form`
   height: 80%;
   text-align: center;
@@ -44,7 +45,6 @@ const LoginWrapper = styled.div`
   height: 10%;
   margin-left: 2rem;
   display: flex;
-
   margin-top: 1rem;
   font-size: 1rem;
   font-weight: bold;
@@ -66,6 +66,7 @@ const LoginLink = styled(Link)`
   font-weight: bold;
   padding-left: 3px;
 `;
+
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -90,6 +91,7 @@ const Register = () => {
       });
     setIsLoading(false);
   };
+
   return (
     <>
       {isLoading && <Loader />}

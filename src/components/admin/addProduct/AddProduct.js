@@ -42,11 +42,13 @@ const Title = styled.h1`
   text-align: center;
   margin-top: 0;
 `;
+
 const Label = styled.label`
   margin-bottom: 0.5rem;
   font-weight: bold;
   font-size: 1.2rem;
 `;
+
 const Input = styled.input`
   height: 30%;
   width: 30vw;
@@ -54,15 +56,16 @@ const Input = styled.input`
   padding: 0.2rem;
   font-size: 1rem;
 `;
+
 const FormItem = styled.div`
   height: 12vh;
   display: flex;
   flex-direction: column;
   width: 50%;
   margin-left: 1rem;
-
   width: 30vw;
 `;
+
 const Form = styled.form`
   padding-top: 1rem;
 `;
@@ -73,6 +76,7 @@ const Select = styled.select`
   border-radius: 8px;
   font-size: 1rem;
 `;
+
 const Option = styled.option``;
 
 const TextArea = styled.textarea`
@@ -86,21 +90,19 @@ const Progress = styled.div`
   background-color: #aaa;
   border: 1px solid transparent;
   border-radius: 10px;
-
   margin-bottom: 5px;
 `;
+
 const ProgressBar = styled.div`
   background-color: #007bff;
   border: 1px solid transparent;
   border-radius: 10px;
   color: #fff;
-
   font-size: 1rem;
 `;
 
 const ProgressCard = styled.div`
   height: ${props => (props.uploadProgress !== 0 ? '15vh' : '8vh')};
-
   margin-left: 1rem;
   margin-top: -12px;
 `;
@@ -222,7 +224,6 @@ const AddProduct = () => {
 
   return (
     <>
-      {/* {isLoading && <Loader />} */}
       <Wrapper>
         <Title>{detectForm(id, 'Add New Product', 'Edit Product')}</Title>
         <Card>
@@ -257,11 +258,9 @@ const AddProduct = () => {
                 name="image"
                 onChange={handleImageChange}
               />
-
               {product.imageURL === '' ? null : (
                 <Input
                   type="text"
-                  // required
                   placeholder="Image URL"
                   name="imageURL"
                   disabled

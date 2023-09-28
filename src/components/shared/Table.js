@@ -1,4 +1,4 @@
-import {Link, useNavigate} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import {FiEdit} from 'react-icons/fi';
 import {BsTrash} from 'react-icons/bs';
@@ -15,6 +15,7 @@ import {
   DECREASE_CART,
   REMOVE_FROM_CART,
 } from '../../redux/slice/cartSlice';
+
 const Table = styled.table`
   width: 100%;
   text-align: center;
@@ -31,6 +32,7 @@ const TableHead = styled.thead`
 const TableBody = styled.tbody`
   font-size: 1.2rem;
 `;
+
 export const ProductsTable = ({filteredProducts}) => {
   const confirmDelete = (id, imageURL) => {
     Notiflix.Confirm.show(
@@ -59,6 +61,7 @@ export const ProductsTable = ({filteredProducts}) => {
       toast.error(error.message);
     }
   };
+
   return (
     <Table>
       <TableHead>
@@ -113,7 +116,6 @@ export const OrdersTable = ({orders, handleClick}) => {
         <tr>
           <th>s/n</th>
           <th>Date</th>
-          <th>Order ID</th>
           <th>Order Amount</th>
           <th>Order Status</th>
         </tr>
@@ -131,7 +133,6 @@ export const OrdersTable = ({orders, handleClick}) => {
               <td>
                 {orderDate} at {orderTime}
               </td>
-              <td>{id}</td>
               <td>{`${orderAmount} MKD`}</td>
               <td>{orderStatus}</td>
             </tr>

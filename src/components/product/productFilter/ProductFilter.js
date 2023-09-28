@@ -23,7 +23,6 @@ const CategoriesContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
   padding-left: 1.5rem;
 `;
 
@@ -61,9 +60,8 @@ const ProductFilter = () => {
     ...new Set(products.map(product => product.category)),
   ];
   const allBrands = ['All', ...new Set(products.map(product => product.brand))];
-  console.log('allBrands', allBrands);
   const dispatch = useDispatch();
-  console.log('allCategories', allCategories);
+
   const filterProducts = category => {
     setCategory(category);
     dispatch(FILTER_BY_CATEGORY({products, category}));
@@ -86,6 +84,7 @@ const ProductFilter = () => {
     setBrand('All');
     setPrice(maxPrice);
   };
+
   return (
     <FilterContainer>
       <FilterWrapper height="50%">

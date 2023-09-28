@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 import {useParams} from 'react-router-dom';
 import {selectUserId, selectUsername} from '../../redux/slice/authSlice';
-import {selectProducts} from '../../redux/slice/productSlice';
 import styled from 'styled-components';
 import Card from '../card/Card';
 import StarsRating from 'react-star-rate';
@@ -10,7 +9,7 @@ import {addDoc, collection, Timestamp} from 'firebase/firestore';
 import {db} from '../../firebase/config';
 import {toast} from 'react-toastify';
 import useFetchDocument from '../../customHooks/useFetchDocument';
-// import spinnerImg
+
 const ReviewContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -58,6 +57,7 @@ const ReviewLabel = styled.p`
   font-size: 1.2rem;
   font-weight: bold;
 `;
+
 const ReviewProducts = () => {
   const [rate, setRate] = useState(0);
   const [review, setReview] = useState('');
@@ -73,7 +73,6 @@ const ReviewProducts = () => {
 
   const submitProductReview = e => {
     e.preventDefault();
-    console.log(review, rate);
     const today = new Date();
     const currentDate = today.toDateString();
 
@@ -112,7 +111,6 @@ const ReviewProducts = () => {
             style={{width: '70%'}}
           />
         </ProductInfo>
-
         <ReviewContent>
           <Card>
             <Form onSubmit={e => submitProductReview(e)}>

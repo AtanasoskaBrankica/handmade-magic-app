@@ -10,10 +10,12 @@ const Container = styled.div`
   padding-left: 2rem;
   padding-right: 2rem;
 `;
+
 const OrderInfo = styled.span`
   margin-top: 0.5rem;
   font-size: 1.2rem;
 `;
+
 const BackButton = styled.button`
   background: lightgrey;
   width: 190px;
@@ -47,13 +49,9 @@ const OrderDetails = () => {
         <BackLink to="/order-history">&larr; Back To Orders</BackLink>
       </BackButton>
       {order === null ? (
-        <>{/* <div>LOADER</div> */}</>
+        <></>
       ) : (
         <>
-          <OrderInfo>
-            <b style={{marginRight: '0.5rem'}}>Order ID:</b>
-            {order.id}
-          </OrderInfo>
           <OrderInfo>
             <b style={{marginRight: '0.5rem'}}>Order Amount:</b>
             {`${order.orderAmount} MKD`}

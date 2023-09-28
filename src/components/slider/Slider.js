@@ -1,5 +1,6 @@
 import React from 'react';
 import slider from './../../assets/ImageSlider.png';
+
 const Slider = () => {
   return (
     <div>

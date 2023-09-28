@@ -24,7 +24,6 @@ const LoginWrapper = styled.div`
 
 const ImageWrapper = styled.div`
   width: 50%;
-
   text-align: right;
 `;
 
@@ -39,6 +38,7 @@ const LoginTitle = styled.h2`
   padding-bottom: 1rem;
   font-size: 1.5rem;
 `;
+
 const LoginForm = styled.form`
   height: 80%;
   text-align: center;
@@ -58,7 +58,6 @@ const ResetLink = styled(Link)`
 
 const RegisterWrapper = styled.div`
   width: 80%;
-
   height: 10%;
   margin-left: 1.3rem;
   display: flex;
@@ -88,6 +87,7 @@ const RegisterLink = styled(Link)`
 const Text = styled.p`
   margin-top: 0rem;
 `;
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -95,7 +95,6 @@ const Login = () => {
   const previousURL = useSelector(selectPreviousURL);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  console.log('email', email);
 
   const redirectUser = () => {
     if (previousURL.includes('cart')) {
@@ -133,6 +132,7 @@ const Login = () => {
         toast.error(error.messagge);
       });
   };
+
   return (
     <>
       {isLoading && <Loader />}

@@ -16,6 +16,7 @@ const BtnWrapper = styled.div`
 const Text = styled.p`
   font-size: 1.2rem;
 `;
+
 const CheckoutSuccess = () => {
   return (
     <Content>

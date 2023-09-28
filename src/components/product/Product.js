@@ -9,7 +9,6 @@ import {
   selectProducts,
   STORE_PRODUCTS,
 } from '../../redux/slice/productSlice';
-import Loader from '../loader/Loader';
 
 const Container = styled.div`
   display: flex;
@@ -19,9 +18,11 @@ const Container = styled.div`
 const Aside = styled.aside`
   width: 20%;
 `;
+
 const ContainerProductList = styled.div`
   width: 80%;
 `;
+
 const Product = () => {
   const {data, isLoading} = useFetchCollection('products');
   const dispatch = useDispatch();
@@ -39,6 +40,7 @@ const Product = () => {
       })
     );
   }, [data]);
+
   return (
     <Container>
       <Aside>

@@ -1,6 +1,7 @@
 import classes from './Loader.module.css';
 import ReactDOM from 'react-dom';
 import loader from '../../assets/loader.gif';
+
 const Loader = () => {
   return ReactDOM.createPortal(
     <div className={classes.wrapper}>

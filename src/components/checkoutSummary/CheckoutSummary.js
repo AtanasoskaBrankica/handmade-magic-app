@@ -15,7 +15,6 @@ const CheckoutSummaryContainer = styled.div`
 
 const SubTotalWrapper = styled.div`
   display: flex;
-
   flex-direction: row;
   justify-content: space-between;
 `;
@@ -32,6 +31,7 @@ const CartQuantity = styled.p`
   margin: 0;
   margin-top: 1rem;
 `;
+
 const CartAmount = styled.p`
   margin: 0;
   margin-top: 0.5rem;

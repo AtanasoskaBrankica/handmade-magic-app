@@ -25,7 +25,6 @@ export const Button = styled.button`
 
 export const BackButton = styled.button`
   background: lightgrey;
-
   padding: 0.5rem;
   font-size: 1.2rem;
   border-radius: 8px;

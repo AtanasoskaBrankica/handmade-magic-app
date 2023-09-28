@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {PaymentElement, useStripe, useElements} from '@stripe/react-stripe-js';
-import CheckoutSummary from '../checkoutSummary/CheckoutSummary';
 import {toast} from 'react-toastify';
 import styled from 'styled-components';
 import {useNavigate} from 'react-router-dom';
@@ -24,24 +23,17 @@ const Container = styled.div`
 const Title = styled.h1`
   padding-left: 4rem;
 `;
-const CheckoutSummaryWrapper = styled.div`
-  width: 50%;
-
-  padding: 4rem 4rem;
-`;
 
 const CheckoutStripeWrapper = styled.div`
   width: 50%;
-
   padding: 4rem 4rem;
 `;
+
 const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
-
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState(null);
-
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -136,9 +128,6 @@ const CheckoutForm = () => {
       <Title>Checkout</Title>
       <form onSubmit={handleSubmit}>
         <Container>
-          {/* <CheckoutSummaryWrapper>
-            <CheckoutSummary />
-          </CheckoutSummaryWrapper> */}
           <CheckoutStripeWrapper>
             <h2>Stripe Checkout</h2>
             <PaymentElement options={paymentElementOptions} />
@@ -171,4 +160,5 @@ const CheckoutForm = () => {
     </div>
   );
 };
+
 export default CheckoutForm;

@@ -7,34 +7,34 @@ import {
   CALCULATE_TOTAL_QUANTITY,
 } from '../../../redux/slice/cartSlice';
 import {useDispatch, useSelector} from 'react-redux';
-import {isIfStatement} from 'typescript';
 import {toast} from 'react-toastify';
 
 const Item = styled.div`
   display: flex;
   flex-direction: column;
   height: 380px;
-
   background-color: white;
 `;
+
 const ImageContainer = styled.div`
   display: flex;
   height: 70%;
   justify-content: center;
 `;
+
 const ProductInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
-
   height: 30%;
   font-size: 20px;
 `;
+
 const ProductPrice = styled.div`
   display: flex;
-
   justify-content: center;
   height: 50%;
 `;
+
 const ProductName = styled.div`
   display: flex;
   font-size: 1.3rem;
@@ -55,6 +55,7 @@ const Button = styled.button`
 const ProductItem = ({product, id, name, price, desc, imageURL}) => {
   const isActiveUser = useSelector(state => state.auth.isLoggedIn);
   const dispatch = useDispatch();
+
   const shorthenText = (text, n) => {
     if (text.lenght > 15) {
       const shorthenedText = text.substring(0, n).concat('...');
@@ -72,6 +73,7 @@ const ProductItem = ({product, id, name, price, desc, imageURL}) => {
       return;
     }
   };
+
   return (
     <Card>
       <Item>
@@ -84,7 +86,6 @@ const ProductItem = ({product, id, name, price, desc, imageURL}) => {
             />
           </Link>
         </ImageContainer>
-
         <ProductInfoContainer>
           <ProductName>{shorthenText(name, 18)}</ProductName>
           <ProductPrice>{`${price} MKD`}</ProductPrice>

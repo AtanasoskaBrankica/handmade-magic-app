@@ -17,6 +17,7 @@ import {
 import useFetchCollection from '../../../customHooks/useFetchCollection';
 import Chart from '../../chart/Chart';
 import {Title} from '../../shared/Title';
+
 const Container = styled.div`
   display: flex;
   flex-direction: row;
@@ -31,6 +32,7 @@ const ContainerChart = styled.div`
 const earningIcon = <AiOutlineDollarCircle size={30} color="green" />;
 const productsIcon = <AiOutlineShoppingCart size={30} color="blue" />;
 const ordersIcon = <TfiShoppingCartFull size={30} color="orange" />;
+
 const Home = () => {
   const products = useSelector(selectProducts);
   const orders = useSelector(selectOrders);
@@ -48,6 +50,7 @@ const Home = () => {
     dispatch(STORE_ORDERS(fbOrders));
     dispatch(CALCULATE_TOTAL_ORDERS_AMOUNT());
   }, [fbProducts, fbOrders]);
+
   return (
     <div>
       <Title>Admin Home</Title>

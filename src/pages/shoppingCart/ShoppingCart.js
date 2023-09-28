@@ -9,8 +9,7 @@ import {
   selectCartTotalQuantity,
   SAVE_URL,
 } from '../../redux/slice/cartSlice';
-
-import {Link, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import Card from '../../components/card/Card';
 import {
@@ -31,14 +30,13 @@ const ButtonsWrapper = styled.div`
 
 const SubTotalWrapper = styled.div`
   display: flex;
-
   flex-direction: row;
   justify-content: space-between;
 `;
+
 const CardContainer = styled.div`
   width: 25%;
   margin-left: 72%;
-
   font-size: 1.3rem;
 `;
 
@@ -83,6 +81,7 @@ const Text = styled.p`
 const Container = styled.div`
   height: 51vh;
 `;
+
 const ShoppingCart = () => {
   const cartItems = useSelector(selectCartItems);
   const cartTotalAmount = useSelector(selectCartTotalAmount);

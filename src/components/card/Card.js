@@ -6,6 +6,7 @@ const CardWrapper = styled.div`
   border-radius: 5px;
   box-shadow: 0 0 10px lightgrey;
 `;
+
 const Card = ({children}) => {
   return <CardWrapper>{children}</CardWrapper>;
 };

@@ -26,6 +26,7 @@ const Container = styled.div`
 const stripePromise = loadStripe(
   'pk_test_51MnPNlFS83r3DyGH1uynH70p8mcV9hcWnxiZji7hA3XVfuYdwzbvM4KPDy9E3tPJCQJerX39AtJUFD8zyMOC42Yh001uYEZDFa'
 );
+
 const Checkout = () => {
   const [message, setMessage] = useState('Initializing checkout...');
   const [clientSecret, setClientSecret] = useState('');
@@ -34,7 +35,6 @@ const Checkout = () => {
   const cartTotalQuantity = useSelector(selectCartTotalQuantity);
   const customerEmail = useSelector(selectUserEmail);
   const shippingAddress = useSelector(selectShippingAddress);
-  // const billingAddress = useSelector(selectBillingAddress);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -44,7 +44,6 @@ const Checkout = () => {
 
   const description = `Payment: email: ${customerEmail}, Amount: ${cartTotalAmount}`;
   useEffect(() => {
-    // Create PaymentIntent as soon as the page loads
     fetch('http://localhost:4242/create-payment-intent', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -52,13 +51,11 @@ const Checkout = () => {
         items: cartItems,
         userEmail: customerEmail,
         shipping: shippingAddress,
-        // billing: billingAddress,
         description,
       }),
     })
       .then(res => {
         if (res.ok) {
-          console.log('res', res);
           return res.json();
         }
         return res.json().then(json => Promise.reject(json));
@@ -82,7 +79,6 @@ const Checkout = () => {
 
   return (
     <>
-      {/* <section> */}
       <div>
         {!clientSecret && (
           <Container>
@@ -90,7 +86,7 @@ const Checkout = () => {
           </Container>
         )}
       </div>
-      {/* </section> */}
+
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
           <CheckoutForm />

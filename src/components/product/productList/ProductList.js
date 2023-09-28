@@ -8,10 +8,11 @@ import {
   selectFilteredProducts,
 } from '../../../redux/slice/filterSlice';
 import Pagination from '../../pagination/Pagination';
+
 const Container = styled.div``;
+
 const TopContainer = styled.div`
   height: 10%;
-
   width: 40%;
   display: flex;
   flex-direction: row;
@@ -23,10 +24,8 @@ const GridWrapper = styled.div`
   display: flex;
   flex-direction: row;
   font-size: 1.2rem;
-
   padding-top: 2px;
   width: 30%;
-
   margin-right: 6rem;
 `;
 

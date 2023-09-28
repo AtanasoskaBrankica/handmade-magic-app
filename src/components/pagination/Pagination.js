@@ -12,10 +12,10 @@ const List = styled.ul`
   flex-direction: row;
   text-align: center;
 `;
+
 const ListItem = styled.li`
   list-style-type: none;
   border: 1px solid lightgrey;
-
   display: flex;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -68,6 +68,7 @@ const Pagination = ({
   for (let i = 1; i <= Math.ceil(totalProducts / productsPerPage); i++) {
     pageNumbers.push(i);
   }
+
   return (
     <Container>
       <List>
@@ -87,7 +88,6 @@ const Pagination = ({
         {currentPage !== pageNumbers[pageNumbers.length - 1] && (
           <ListItem onClick={paginateNext}>Next</ListItem>
         )}
-
         <Text>
           <span style={{color: '#ffae00'}}>
             <b>{`Page ${currentPage}`}</b>

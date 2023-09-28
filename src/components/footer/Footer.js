@@ -10,8 +10,10 @@ const FooterWrapper = styled.div`
   color: white;
   font-size: 1.2rem;
 `;
+
 const date = new Date();
 const currentYear = date.getFullYear();
+
 const Footer = () => {
   return <FooterWrapper>&copy; {currentYear} All Right Reserved</FooterWrapper>;
 };

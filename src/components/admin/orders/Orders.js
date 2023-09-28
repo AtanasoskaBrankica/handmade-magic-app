@@ -38,7 +38,6 @@ const Orders = () => {
       <SubTitle>
         Open an order to <b>Change Order Status</b>
       </SubTitle>
-      {/* {isLoading && <Loader>} */}
       <div>
         {orders.length === 0 ? (
           <p>No order found.</p>

@@ -73,6 +73,7 @@ const Chart = () => {
       },
     ],
   };
+
   return (
     <Wrapper>
       <h2>Order Status Chart</h2>

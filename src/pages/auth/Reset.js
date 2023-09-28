@@ -14,6 +14,7 @@ const ResetWrapper = styled.div`
   width: 50%;
   padding-top: 10rem;
 `;
+
 const ImageWrapper = styled.div`
   width: 50%;
   padding-top: 1rem;
@@ -29,6 +30,7 @@ const ResetTitle = styled.h2`
   text-align: center;
   padding-top: 0.5rem;
 `;
+
 const ResetForm = styled.form`
   height: 80%;
   text-align: center;
@@ -50,6 +52,7 @@ const Reset = () => {
       });
     setIsLoading(false);
   };
+
   return (
     <>
       {isLoading && <Loader />}

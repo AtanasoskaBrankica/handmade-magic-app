@@ -1,4 +1,4 @@
-import {collection, doc, setDoc, Timestamp} from 'firebase/firestore';
+import {doc, setDoc, Timestamp} from 'firebase/firestore';
 import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
@@ -35,6 +35,7 @@ const ContentWrapper = styled.div`
 const BtnWrapper = styled.div`
   margin-top: 1rem;
 `;
+
 const OrderStatus = ({order, id}) => {
   const [orderStatus, setOrderStatus] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -60,8 +61,6 @@ const OrderStatus = ({order, id}) => {
 
   return (
     <>
-      {/* {isLoading && LOADER} */}
-
       <Container>
         <Title>Update Order Status</Title>
         <form onSubmit={event => changeOrderStatus(event, id)}>

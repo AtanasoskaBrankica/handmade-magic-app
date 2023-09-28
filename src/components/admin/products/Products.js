@@ -18,18 +18,17 @@ import Loader from '../../loader/Loader';
 
 const TopContainer = styled.div`
   height: 10%;
-
   width: 40%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 1rem;
 `;
+
 const GridWrapper = styled.div`
   display: flex;
   flex-direction: row;
   font-size: 1.2rem;
-
   padding-top: 2px;
   width: 30%;
   padding-bottom: 0.5rem;
@@ -62,7 +61,6 @@ const Products = () => {
   useEffect(() => {
     dispatch(FILTER_BY_SEARCH({products, searchValue}));
   }, [searchValue, products]);
-  console.log('isLoading', isLoading);
 
   return (
     <>

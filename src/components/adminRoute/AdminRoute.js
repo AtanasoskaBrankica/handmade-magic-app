@@ -13,6 +13,7 @@ const WrapperText = styled.div`
   margin-left: 3rem;
 `;
 const Title = styled.h1``;
+
 const Text = styled.p``;
 
 const BackButton = styled.button`
@@ -21,11 +22,13 @@ const BackButton = styled.button`
   border: none;
   border-radius: 1rem;
 `;
+
 const AdminRoute = ({children}) => {
   const userEmail = useSelector(state => state.auth.email);
   if (userEmail === 'admin@gmail.com') {
     return children;
   }
+
   return (
     <Wrapper>
       <WrapperText>
@@ -41,6 +44,7 @@ const AdminRoute = ({children}) => {
 
 export const AdminLink = ({children}) => {
   const userEmail = useSelector(state => state.auth.email);
+
   if (userEmail === 'admin@gmail.com') {
     return children;
   }

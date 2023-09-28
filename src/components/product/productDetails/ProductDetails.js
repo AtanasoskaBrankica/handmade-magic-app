@@ -28,6 +28,7 @@ const HeaderContainer = styled.div`
   height: 20%;
   padding-left: 5.5rem;
 `;
+
 const ProductContainer = styled.div`
   height: 80%;
   display: flex;
@@ -48,7 +49,6 @@ const ProductContent = styled.div`
 
 const ImageWrapper = styled.div`
   width: 85%;
-
   margin-left: 5rem;
 `;
 
@@ -82,6 +82,7 @@ const Wrapper = styled.div`
 const ButtonWrapper = styled.div`
   margin-top: 2rem;
 `;
+
 const ProductDetails = () => {
   const {id} = useParams();
   const [product, setProduct] = useState({});
@@ -110,6 +111,7 @@ const ProductDetails = () => {
     dispatch(DECREASE_CART(product));
     dispatch(CALCULATE_TOTAL_QUANTITY());
   };
+
   return (
     <Container>
       <HeaderContainer>
@@ -119,7 +121,6 @@ const ProductDetails = () => {
         </BackButton>
       </HeaderContainer>
       {product === null ? (
-        //SPINNER
         <div></div>
       ) : (
         <ProductContainer>
@@ -134,7 +135,6 @@ const ProductDetails = () => {
               </Card>
             </ImageWrapper>
           </ImageContainer>
-
           <ProductContent>
             <ProductLabel fontSize="1.5rem" marginTop="0">
               <b>{product.name}</b>

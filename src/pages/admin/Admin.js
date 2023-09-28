@@ -14,7 +14,6 @@ const Admin = () => {
         <Navbar />
       </div>
       <div className={classes.content}>
-        {/*Nested routes */}
         <Routes>
           <Route path="home" element={<Home />} />
           <Route path="all-products" element={<Products />} />

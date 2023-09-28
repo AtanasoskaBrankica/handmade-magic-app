@@ -18,6 +18,7 @@ const ContentContainer = styled.div`
 const FormContainer = styled.div`
   width: 40%;
 `;
+
 const InformationContainer = styled.div`
   width: 50%;
 `;
@@ -62,6 +63,7 @@ const Container = styled.div`
   height: 68vh;
   padding-left: 8rem;
 `;
+
 const Contact = () => {
   const form = useRef();
   const sendEmailMessage = e => {
@@ -84,6 +86,7 @@ const Contact = () => {
       );
     e.target.reset();
   };
+
   return (
     <Container>
       <TitlePage>Contact us</TitlePage>
