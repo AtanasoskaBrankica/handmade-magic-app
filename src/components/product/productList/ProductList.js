@@ -13,7 +13,7 @@ const Container = styled.div``;
 
 const TopContainer = styled.div`
   height: 10%;
-  width: 40%;
+  width: 50%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -23,20 +23,19 @@ const TopContainer = styled.div`
 const GridWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  font-size: 1.2rem;
+  font-size: 1rem;
   padding-top: 2px;
-  width: 30%;
-  margin-right: 6rem;
+  margin-right: 11rem;
 `;
 
 const SearchWrapper = styled.div`
-  width: 50%;
+  width: 40%;
 `;
 
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 400px 450px;
+  grid-template-rows: 280px 300px;
   grid-gap: 15px;
   margin-top: 1rem;
   height: 100%;

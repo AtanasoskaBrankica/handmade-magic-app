@@ -25,7 +25,7 @@ const BackButton = styled.button`
 
 const AdminRoute = ({children}) => {
   const userEmail = useSelector(state => state.auth.email);
-  if (userEmail === 'admin@gmail.com') {
+  if (userEmail?.includes('admin')) {
     return children;
   }
 
@@ -45,7 +45,7 @@ const AdminRoute = ({children}) => {
 export const AdminLink = ({children}) => {
   const userEmail = useSelector(state => state.auth.email);
 
-  if (userEmail === 'admin@gmail.com') {
+  if (userEmail?.includes('admin')) {
     return children;
   }
   return;

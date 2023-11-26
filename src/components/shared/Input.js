@@ -4,7 +4,7 @@ export const Input = styled.input`
   width: 70%;
   height: 10%;
   margin-bottom: 1rem;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   padding: 0.8rem;
   border-radius: 10px;
   border: 1px solid grey;
@@ -19,7 +19,7 @@ export const FormInput = styled.input`
   width: 30vw;
   border-radius: 10px;
   padding: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
 `;
 export const FormItem = styled.div`
   height: 10vh;
@@ -30,4 +30,5 @@ export const FormItem = styled.div`
   margin-top: 1rem;
   width: 30vw;
   margin-right: 2rem;
+  font-size: 1rem;
 `;

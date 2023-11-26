@@ -65,7 +65,7 @@ const RightWrapper = styled.div`
 const LogoLink = styled(Link)`
   text-decoration: none;
   color: white;
-  font-size: 2.5rem;
+  font-size: 2rem;
   @import url('https://fonts.googleapis.com/css2?family=Karla:wght@200&family=PT+Serif&family=Playfair+Display:ital@1&family=Quicksand:wght@300&family=Roboto:wght@100&display=swap');
 
   font-family: 'Dancing Script', cursive, 'Karla', sans-serif,
@@ -94,7 +94,7 @@ const ContactUs = styled.div`
 const HeaderNavLink = styled(NavLink)`
   text-decoration: none;
   color: white;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Dancing+Script:wght@600;700&family=Exo+2:ital,wght@0,300;0,400;1,300&family=Kanit:wght@300&family=Karla:wght@200&family=Montserrat+Alternates:ital,wght@0,500;1,900&family=PT+Serif&family=Playfair+Display:ital@1&family=Poltawski+Nowy:ital@1&family=Quicksand:wght@400;500&family=Roboto:wght@100&family=Space+Grotesk&family=Ysabeau:ital,wght@0,1;0,900;1,1;1,900;1,1000&display=swap');
   font-family: 'Dancing Script', cursive;
 `;
@@ -102,7 +102,7 @@ const HeaderNavLink = styled(NavLink)`
 const HeaderLink = styled(Link)`
   text-decoration: none;
   color: white;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Dancing+Script:wght@600;700&family=Exo+2:ital,wght@0,300;0,400;1,300&family=Kanit:wght@300&family=Karla:wght@200&family=Montserrat+Alternates:ital,wght@0,500;1,900&family=PT+Serif&family=Playfair+Display:ital@1&family=Poltawski+Nowy:ital@1&family=Quicksand:wght@400;500&family=Roboto:wght@100&family=Space+Grotesk&family=Ysabeau:ital,wght@0,1;0,900;1,1;1,900;1,1000&display=swap');
   font-family: 'Dancing Script', cursive;
 `;
@@ -110,7 +110,7 @@ const HeaderLink = styled(Link)`
 const HeaderUserLink = styled(Link)`
   text-decoration: none;
   color: white;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Dancing+Script:wght@600;700&family=Exo+2:ital,wght@0,300;0,400;1,300&family=Kanit:wght@300&family=Karla:wght@200&family=Montserrat+Alternates:ital,wght@0,500;1,900&family=PT+Serif&family=Playfair+Display:ital@1&family=Poltawski+Nowy:ital@1&family=Quicksand:wght@400;500&family=Roboto:wght@100&family=Space+Grotesk&family=Ysabeau:ital,wght@0,1;0,900;1,1;1,900;1,1000&display=swap');
   font-family: 'Dancing Script', cursive;
   padding-right: 7px;
@@ -137,7 +137,7 @@ const Logout = styled.div`
 
 const Cart = styled.div`
   width: 20%;
-  padding-top: 3rem;
+  padding-top: 2.8rem;
 `;
 
 const CartNumber = styled.span`
@@ -146,7 +146,7 @@ const CartNumber = styled.span`
 
 const AdminButton = styled.button`
   border: none;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   cursor: pointer;
   @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Dancing+Script:wght@600;700&family=Exo+2:ital,wght@0,300;0,400;1,300&family=Kanit:wght@300&family=Karla:wght@200&family=Montserrat+Alternates:ital,wght@0,500;1,900&family=PT+Serif&family=Playfair+Display:ital@1&family=Poltawski+Nowy:ital@1&family=Quicksand:wght@400;500&family=Roboto:wght@100&family=Space+Grotesk&family=Ysabeau:ital,wght@0,1;0,900;1,1;1,900;1,1000&display=swap');
   font-family: 'Dancing Script', cursive;
@@ -244,7 +244,7 @@ const Header = () => {
         <UserName>
           <ShowOnLogin>
             <HeaderUserLink href="#home">
-              <FaUserAlt size={15} />
+              <FaUserAlt size={12} />
               Hi,{userName}
             </HeaderUserLink>
           </ShowOnLogin>

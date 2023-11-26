@@ -14,13 +14,13 @@ import {AuthWrapper} from '../../components/shared/Container';
 
 const ImageWrapper = styled.div`
   width: 50%;
-  margin-top: 2rem;
+  margin-top: 1rem;
   text-align: right;
 `;
 
 const RegisterWrapper = styled.div`
   width: 50%;
-  padding-top: 7rem;
+  padding-top: 4rem;
   margin-left: 10%;
 `;
 
@@ -32,6 +32,7 @@ const RegisterFormWrapper = styled.div`
 const RegisterTitle = styled.h2`
   text-align: center;
   padding-top: 1rem;
+  font-size: 1.5rem;
 `;
 
 const RegisterForm = styled.form`
@@ -46,7 +47,7 @@ const LoginWrapper = styled.div`
   margin-left: 2rem;
   display: flex;
   margin-top: 1rem;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: bold;
 `;
 

@@ -11,7 +11,7 @@ export const FilterWrapper = styled.div`
 `;
 
 export const FilterContent = styled.div`
-  padding-left: 7rem;
+  padding-left: 4.5rem;
   font-size: ${props => props.fontSize};
 `;
 
@@ -22,5 +22,5 @@ export const QuantityWrapper = styled.div`
 `;
 
 export const CartQuantity = styled.div`
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 `;

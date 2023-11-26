@@ -11,6 +11,7 @@ import {Link} from 'react-router-dom';
 const CheckoutSummaryContainer = styled.div`
   padding-left: 1rem;
   padding-right: 1rem;
+  font-size: 1rem;
 `;
 
 const SubTotalWrapper = styled.div`
@@ -52,7 +53,7 @@ const CheckoutSummary = () => {
   const cartTotalQuantity = useSelector(selectCartTotalQuantity);
   return (
     <CheckoutSummaryContainer>
-      <h2>Checkout Summary</h2>
+      <h2 style={{fontSize: '1.3rem'}}>Checkout Summary</h2>
       <div>
         {cartItems.lenght === 0 ? (
           <>

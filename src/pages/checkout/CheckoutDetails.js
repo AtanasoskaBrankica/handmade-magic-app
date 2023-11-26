@@ -23,6 +23,7 @@ const Container = styled.div``;
 const CheckoutTitle = styled.h1`
   padding-left: 3rem;
   padding-bottom: 1rem;
+  font-size: 1.5rem;
 `;
 
 const CheckoutWrapper = styled.div`
@@ -50,7 +51,7 @@ const Wrapper = styled.div``;
 
 const Title = styled.h2`
   padding-left: 1rem;
-  font-size: 2rem;
+  font-size: 1.3rem;
 `;
 
 const BtnWrapper = styled.div`
@@ -83,7 +84,6 @@ const CheckoutDetails = () => {
   return (
     <Container>
       <CheckoutTitle>Checkout Details</CheckoutTitle>
-
       <CheckoutWrapper>
         <Card>
           <LeftWrapper>
@@ -134,9 +134,9 @@ const CheckoutDetails = () => {
                   <CountryDropdown
                     valueType="short"
                     style={{
-                      fontSize: '1.2rem',
+                      fontSize: '1rem',
                       marginTop: '0.5rem',
-                      width: '570px',
+                      width: '430px',
                       padding: '1rem',
                       borderRadius: '10px',
                     }}

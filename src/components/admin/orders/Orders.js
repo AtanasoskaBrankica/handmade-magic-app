@@ -14,7 +14,7 @@ const Container = styled.div`
 `;
 
 const SubTitle = styled.p`
-  font-size: 1.2rem;
+  font-size: 1rem;
 `;
 
 const Orders = () => {

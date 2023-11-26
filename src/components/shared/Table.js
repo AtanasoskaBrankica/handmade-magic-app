@@ -24,13 +24,13 @@ const Table = styled.table`
 `;
 
 const TableHead = styled.thead`
-  font-size: 1.2rem;
+  font-size: 1rem;
   background: lightgrey;
   color: white;
 `;
 
 const TableBody = styled.tbody`
-  font-size: 1.2rem;
+  font-size: 1rem;
 `;
 
 export const ProductsTable = ({filteredProducts}) => {
@@ -91,7 +91,7 @@ export const ProductsTable = ({filteredProducts}) => {
               <td>{`${price} MKD`}</td>
               <td>
                 <Link to={`/admin/add-product/${id}`}>
-                  <FiEdit size={20} color="green" />
+                  <FiEdit size={18} color="green" />
                 </Link>
                 &nbsp;
                 <BsTrash
@@ -220,7 +220,7 @@ export const ShoppingCartTable = ({cartItems}) => {
                 <p style={{margin: '0'}}>
                   <b>{name}</b>
                 </p>
-                <img src={imageURL} alt={name} style={{width: '200px'}} />
+                <img src={imageURL} alt={name} style={{width: '150px'}} />
               </td>
               <td>{`${price} MKD`}</td>
               <td>
@@ -240,7 +240,7 @@ export const ShoppingCartTable = ({cartItems}) => {
               <td>
                 <BsTrash
                   onClick={() => removeFromCart(cartItem)}
-                  size={20}
+                  size={18}
                   color="red"
                   cursor="pointer"
                 />

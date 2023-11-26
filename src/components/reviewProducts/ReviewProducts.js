@@ -17,7 +17,7 @@ const ReviewContainer = styled.div`
 `;
 
 const ProductName = styled.p`
-  font-size: 1.3rem;
+  font-size: 1rem;
 `;
 
 const ReviewContent = styled.div`
@@ -35,6 +35,7 @@ const ProductInfo = styled.div`
 
 const ReviewTitle = styled.h1`
   padding-left: 10rem;
+  font-size: 1.5rem;
 `;
 
 const Form = styled.form`
@@ -47,14 +48,14 @@ const ReviewButton = styled.button`
   width: 25%;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   border-radius: 10px;
   cursor: pointer;
   border: none;
 `;
 
 const ReviewLabel = styled.p`
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: bold;
 `;
 
@@ -123,7 +124,7 @@ const ReviewProducts = () => {
               />
               <ReviewLabel>Review:</ReviewLabel>
               <textarea
-                cols="56"
+                cols="50"
                 rows="10"
                 value={review}
                 style={{fontSize: '1.2rem'}}

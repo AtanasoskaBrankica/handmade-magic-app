@@ -11,12 +11,13 @@ import {selectOrders, STORE_ORDERS} from '../../redux/slice/orderSlice';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  height: 70vh;
+  padding-bottom: 1rem;
+  height: 60vh;
 `;
 
 const SubTitle = styled.p`
   padding-left: 3rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin-bottom: 0;
 `;
 
@@ -37,14 +38,14 @@ const Orders = () => {
 
   const filteredOrdersByUser = orders.filter(order => order.userId === userId);
   return (
-    <Container>
+    <Container filteredOrdersByUser>
       <TitlePage>Your Order History</TitlePage>
       <SubTitle>
         Open an order to leave a <b>Product Review</b>
       </SubTitle>
       <div style={{paddingLeft: '3rem', paddingRight: '3rem'}}>
-        <h2>All Orders</h2>
-        {orders.length === 0 ? (
+        <h2 style={{fontSize: '1.2rem'}}>All Orders</h2>
+        {filteredOrdersByUser.length === 0 ? (
           <p>No order found.</p>
         ) : (
           <OrdersTable

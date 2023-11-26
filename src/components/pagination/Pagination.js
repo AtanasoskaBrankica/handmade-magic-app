@@ -27,7 +27,7 @@ const ListItem = styled.li`
 
 const Text = styled.p`
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1rem;
   padding: 0.3rem;
 `;
 

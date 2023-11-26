@@ -8,7 +8,7 @@ const FooterWrapper = styled.div`
   font-weight: bold;
   background-color: #c1b199;
   color: white;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
 `;
 
 const date = new Date();

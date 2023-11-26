@@ -22,11 +22,12 @@ const Container = styled.div`
 
 const Title = styled.h1`
   padding-left: 4rem;
+  font-size: 1.5rem;
 `;
 
 const CheckoutStripeWrapper = styled.div`
   width: 50%;
-  padding: 4rem 4rem;
+  padding: 0rem 4rem;
 `;
 
 const CheckoutForm = () => {
@@ -129,7 +130,7 @@ const CheckoutForm = () => {
       <form onSubmit={handleSubmit}>
         <Container>
           <CheckoutStripeWrapper>
-            <h2>Stripe Checkout</h2>
+            <h2 style={{fontSize: '1.3rem'}}>Stripe Checkout</h2>
             <PaymentElement options={paymentElementOptions} />
             <button
               disabled={isLoading || !stripe || !elements}
@@ -141,7 +142,7 @@ const CheckoutForm = () => {
                 borderRadius: '0.5rem',
                 width: '7rem',
                 color: 'white',
-                fontSize: '1rem',
+                fontSize: '0.8rem',
                 marginTop: '1rem',
               }}
             >
