@@ -12,7 +12,7 @@ import {AuthWrapper} from '../../components/shared/Container';
 
 const ResetWrapper = styled.div`
   width: 50%;
-  padding-top: 10rem;
+  padding-top: 7rem;
 `;
 
 const ImageWrapper = styled.div`

@@ -41,12 +41,13 @@ const Wrapper = styled.div`
 const Title = styled.h1`
   text-align: center;
   margin-top: 0;
+  font-size: 1.5rem;
 `;
 
 const Label = styled.label`
   margin-bottom: 0.5rem;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1rem;
 `;
 
 const Input = styled.input`
@@ -54,7 +55,7 @@ const Input = styled.input`
   width: 30vw;
   border-radius: 8px;
   padding: 0.2rem;
-  font-size: 1rem;
+  font-size: 0.8rem;
 `;
 
 const FormItem = styled.div`
@@ -74,7 +75,7 @@ const Select = styled.select`
   width: 30vw;
   height: 35%;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 0.8rem;
 `;
 
 const Option = styled.option``;
@@ -83,7 +84,7 @@ const TextArea = styled.textarea`
   width: 30vw;
   height: 80vh;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 0.8rem;
 `;
 
 const Progress = styled.div`
@@ -98,7 +99,7 @@ const ProgressBar = styled.div`
   border: 1px solid transparent;
   border-radius: 10px;
   color: #fff;
-  font-size: 1rem;
+  font-size: 0.8rem;
 `;
 
 const ProgressCard = styled.div`
@@ -265,7 +266,7 @@ const AddProduct = () => {
                   name="imageURL"
                   disabled
                   value={product.imageURL}
-                  style={{marginTop: '-10px'}}
+                  style={{padding: '0', height: '25%', marginTop: '-10rem'}}
                 />
               )}
             </ProgressCard>

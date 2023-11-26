@@ -21,14 +21,13 @@ const UserProfile = styled.div`
 `;
 
 const UserWrapper = styled.div`
-  width: 20%;
-  margin-left: 43%;
-  margin-top: 2rem;
+  margin-top: 1rem;
   font-weight: bold;
 `;
 
 const UserName = styled.div`
   font-size: 1.2rem;
+  margin-left: 8.5rem;
 `;
 
 const NavBar = styled.nav`
@@ -40,7 +39,7 @@ const NavBarItem = styled.div`
   padding-top: 1rem;
   padding-bottom: 1rem;
   display: flex;
-  font-size: 1.2rem;
+  font-size: 1rem;
   padding-left: 0.5rem;
 `;
 
@@ -57,25 +56,25 @@ const Navbar = () => {
     <NavbarWrapper>
       <UserProfile>
         <UserWrapper>
-          <FaUser size={50} color="white" />
+          <FaUser size={35} color="white" style={{marginLeft: '9rem'}} />
           <UserName>{userName}</UserName>
         </UserWrapper>
       </UserProfile>
       <NavBar>
         <NavBarItem>
-          <RiArrowDropRightFill color="black" size={30} />
+          <RiArrowDropRightFill color="black" size={25} />
           <StyledNavLink to="/admin/home">Home</StyledNavLink>
         </NavBarItem>
         <NavBarItem>
-          <RiArrowDropRightFill color="black" size={30} />
+          <RiArrowDropRightFill color="black" size={25} />
           <StyledNavLink to="/admin/all-products">All Products</StyledNavLink>
         </NavBarItem>
         <NavBarItem>
-          <RiArrowDropRightFill color="black" size={30} />
+          <RiArrowDropRightFill color="black" size={25} />
           <StyledNavLink to="/admin/add-product/ADD">Add Product</StyledNavLink>
         </NavBarItem>
         <NavBarItem>
-          <RiArrowDropRightFill color="black" size={30} />
+          <RiArrowDropRightFill color="black" size={25} />
           <StyledNavLink to="/admin/orders">Orders</StyledNavLink>
         </NavBarItem>
       </NavBar>

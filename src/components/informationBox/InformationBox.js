@@ -9,7 +9,7 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.h3`
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: bold;
   padding-left: 1rem;
 `;
@@ -21,7 +21,7 @@ const Content = styled.div`
 `;
 
 const Count = styled.div`
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   padding-left: 1rem;
 `;
 

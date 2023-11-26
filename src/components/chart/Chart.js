@@ -76,7 +76,7 @@ const Chart = () => {
 
   return (
     <Wrapper>
-      <h2>Order Status Chart</h2>
+      <h2 style={{fontSize: '1.3rem'}}>Order Status Chart</h2>
       <Bar options={options} data={data} />
     </Wrapper>
   );

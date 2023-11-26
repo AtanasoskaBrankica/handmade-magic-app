@@ -19,7 +19,7 @@ import {REMOVE_ACTIVE_USER} from '../../redux/slice/authSlice';
 
 const LoginWrapper = styled.div`
   width: 50%;
-  padding-top: 7rem;
+  padding-top: 2rem;
 `;
 
 const ImageWrapper = styled.div`
@@ -34,8 +34,7 @@ const LoginFormWrapper = styled.div`
 
 const LoginTitle = styled.h2`
   text-align: center;
-  padding-top: 2rem;
-  padding-bottom: 1rem;
+  padding-top: 1rem;
   font-size: 1.5rem;
 `;
 
@@ -52,7 +51,7 @@ const ResetLinkWrapper = styled.div`
 const ResetLink = styled(Link)`
   text-decoration: none;
   color: black;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: bold;
 `;
 
@@ -61,7 +60,7 @@ const RegisterWrapper = styled.div`
   height: 10%;
   margin-left: 1.3rem;
   display: flex;
-  font-size: 16px;
+  font-size: 0.8rem;
   margin-top: 1rem;
   font-weight: bold;
   margin-bottom: 2.5rem;

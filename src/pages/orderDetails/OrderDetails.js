@@ -13,14 +13,14 @@ const Container = styled.div`
 
 const OrderInfo = styled.span`
   margin-top: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
 `;
 
 const BackButton = styled.button`
   background: lightgrey;
   width: 190px;
   padding: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   border-radius: 8px;
   border: none;
 `;
@@ -44,7 +44,7 @@ const OrderDetails = () => {
   }, [document]);
   return (
     <Container>
-      <h1>Order Details</h1>
+      <h1 style={{fontSize: '1.5rem'}}>Order Details</h1>
       <BackButton>
         <BackLink to="/order-history">&larr; Back To Orders</BackLink>
       </BackButton>

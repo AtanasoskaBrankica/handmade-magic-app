@@ -30,7 +30,7 @@ const CategoriesButton = styled.button`
   border: none;
   background: white;
   border-bottom: 1px solid lightgrey;
-  font-size: 1.2rem;
+  font-size: 1rem;
   width: 50%;
   text-align: left;
   margin-bottom: 2.5rem;
@@ -40,11 +40,11 @@ const CategoriesButton = styled.button`
 const Select = styled.select`
   border-radius: 15px;
   padding: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
 `;
 
 const ButtonWrapper = styled.div`
-  margin-left: 7rem;
+  margin-left: 4.5rem;
 `;
 
 const ProductFilter = () => {

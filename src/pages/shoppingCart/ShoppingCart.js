@@ -37,11 +37,12 @@ const SubTotalWrapper = styled.div`
 const CardContainer = styled.div`
   width: 25%;
   margin-left: 72%;
-  font-size: 1.3rem;
+  font-size: 1rem;
 `;
 
 const ShoppingCartTitle = styled.h1`
   padding-left: 3rem;
+  font-size: 1.5rem;
 `;
 
 const BtnWrapper = styled.div`
@@ -60,7 +61,7 @@ const CartAmount = styled.p`
   margin: 0;
   margin-top: 0.5rem;
   margin-left: 5rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: red;
   margin-right: 1rem;
 `;
@@ -72,7 +73,7 @@ const SubTotalTitle = styled.h4`
 `;
 
 const Text = styled.p`
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   margin-left: 3rem;
   text-align: center;
   font-weight: bold;

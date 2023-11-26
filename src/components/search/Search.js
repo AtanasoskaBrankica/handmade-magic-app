@@ -13,7 +13,7 @@ const SearchContainer = styled.div`
 
 const SearchInput = styled.input`
   border: none;
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   outline: none;
 `;
 
@@ -26,7 +26,7 @@ const Search = ({value, onChange}) => {
   return (
     <SearchContainer>
       <SearchIcon>
-        <BiSearch size={20} />
+        <BiSearch size={18} />
       </SearchIcon>
       <SearchInput
         type="text"

@@ -28,9 +28,8 @@ const TopContainer = styled.div`
 const GridWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  font-size: 1.2rem;
+  font-size: 1rem;
   padding-top: 2px;
-  width: 30%;
   padding-bottom: 0.5rem;
   margin-right: 6rem;
 `;

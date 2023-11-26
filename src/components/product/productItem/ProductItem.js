@@ -12,7 +12,7 @@ import {toast} from 'react-toastify';
 const Item = styled.div`
   display: flex;
   flex-direction: column;
-  height: 380px;
+  height: 280px;
   background-color: white;
 `;
 
@@ -26,7 +26,7 @@ const ProductInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 30%;
-  font-size: 20px;
+  font-size: 1rem;
 `;
 
 const ProductPrice = styled.div`
@@ -37,7 +37,7 @@ const ProductPrice = styled.div`
 
 const ProductName = styled.div`
   display: flex;
-  font-size: 1.3rem;
+  font-size: 1rem;
   justify-content: center;
   height: 50%;
 `;
@@ -46,7 +46,7 @@ const Button = styled.button`
   background: #ffae00;
   color: white;
   padding: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   border-radius: 8px;
   border: none;
   cursor: pointer;
@@ -80,7 +80,7 @@ const ProductItem = ({product, id, name, price, desc, imageURL}) => {
         <ImageContainer>
           <Link to={`/product-details/${id}`}>
             <img
-              style={{width: '270px', height: '230px'}}
+              style={{width: '200px', height: '180px'}}
               src={imageURL}
               alt={name}
             />

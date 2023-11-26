@@ -48,8 +48,8 @@ const ProductContent = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  width: 85%;
-  margin-left: 5rem;
+  width: 80%;
+  margin-left: 4rem;
 `;
 
 const ReviewsContainer = styled.div`
@@ -68,6 +68,7 @@ const ReviewTitle = styled.h3`
   padding-left: 1rem;
   margin: 0;
   padding-top: 1rem;
+  font-size: 1rem;
 `;
 
 const ReviewMessage = styled.p`
@@ -115,7 +116,7 @@ const ProductDetails = () => {
   return (
     <Container>
       <HeaderContainer>
-        <h1>Product Details</h1>
+        <h1 style={{fontSize: '1.5rem'}}>Product Details</h1>
         <BackButton>
           <BackLink to="/#products">&larr; Back To Products</BackLink>
         </BackButton>
@@ -136,18 +137,18 @@ const ProductDetails = () => {
             </ImageWrapper>
           </ImageContainer>
           <ProductContent>
-            <ProductLabel fontSize="1.5rem" marginTop="0">
+            <ProductLabel fontSize="1.2rem" marginTop="0">
               <b>{product.name}</b>
             </ProductLabel>
-            <ProductLabel fontSize="1.2rem">
+            <ProductLabel fontSize="1rem">
               <b>Price:</b>
               {` ${product.price} MKD`}
             </ProductLabel>
-            <ProductLabel fontSize="1.2rem">
+            <ProductLabel fontSize="1rem">
               <b>Description: </b>
               {product.desc}
             </ProductLabel>
-            <ProductLabel fontSize="1.2rem">
+            <ProductLabel fontSize="1rem">
               <b>Brand:</b>
               {product.brand}
             </ProductLabel>
@@ -186,7 +187,7 @@ const ProductDetails = () => {
                       {filteredReviews.map((item, index) => {
                         const {rate, review, reviewDate, username} = item;
                         return (
-                          <div>
+                          <div style={{fontSize: '1rem'}}>
                             <StarsRating value={rate} />
                             <p>{review}</p>
                             <p>{reviewDate}</p>

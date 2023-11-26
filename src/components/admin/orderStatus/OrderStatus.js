@@ -17,13 +17,13 @@ const Container = styled.div`
 `;
 
 const Title = styled.h4`
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin: 0;
   margin-bottom: 1rem;
 `;
 
 const Select = styled.select`
-  font-size: 1.2rem;
+  font-size: 1rem;
   padding: 0.8rem;
 `;
 

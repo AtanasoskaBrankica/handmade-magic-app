@@ -42,7 +42,7 @@ const InformationContent = styled.div`
   padding: 1.5rem;
   color: white;
   height: 60%;
-  font-size: 1.2rem;
+  font-size: 1rem;
   border-radius: 3%;
 `;
 
@@ -57,7 +57,9 @@ const InformationLabel = styled.p`
   padding-bottom: 0.5rem;
 `;
 
-const TitlePage = styled.h1``;
+const TitlePage = styled.h1`
+  font-size: 1.5rem;
+`;
 
 const Container = styled.div`
   height: 68vh;

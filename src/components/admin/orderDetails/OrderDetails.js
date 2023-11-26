@@ -14,7 +14,7 @@ const Container = styled.div`
 
 const OrderInfo = styled.span`
   margin-top: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
 `;
 
 const BtnContainer = styled.div`
